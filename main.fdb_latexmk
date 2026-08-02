@@ -1,15 +1,15 @@
 # Fdb version 4
-["bibtex main"] 1785610649.96859 "main.aux" "main.bbl" "main" 1785610650.39635 0
+["bibtex main"] 1785674833.44473 "main.aux" "main.bbl" "main" 1785674833.89679 0
   "./IEEEtran.bst" 1783769370 59215 bc5380b3434a66b895bbc75d3d380540 ""
   "./references.bib" 1785608008.51314 9735 eee963325453b1d9530fe1e8fdc54a61 ""
-  "main.aux" 1785610650.30442 2408 e35afa72ce7e732b49a08106af12d1eb "pdflatex"
+  "main.aux" 1785674833.80567 2534 f026c4c26ecc43f3ebc6991a29021d6f "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1785610649.99088 "/home/gabriel/Code/Analise-vibracao-paper/main.tex" "main.pdf" "main" 1785610650.39657 0
+["pdflatex"] 1785674833.47446 "/home/gabriel/Code/Analise-vibracao-paper/main.tex" "main.pdf" "main" 1785674833.89704 0
   "/etc/texmf/web2c/texmf.cnf" 1774808151.44589 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/gabriel/Code/Analise-vibracao-paper/main.tex" 1785610649.00939 12569 f5bc3bbe963ce00be32a52b44d65346c ""
+  "/home/gabriel/Code/Analise-vibracao-paper/main.tex" 1785674832.83328 13797 45e1d9705ef7275c5e484986889de978 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/courier/pcrr7t.tfm" 1136768653 960 379cc0019370a9e0208a0a3f949f847a ""
@@ -97,9 +97,9 @@
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1785607298 6832093 210997ae53ee29f1784bf9e26a36bda5 ""
   "IEEEtran.cls" 1783769370 281957 5b2e4fa15b0f7eabb840ebf67df4c0f7 ""
   "fig1.png" 1783769370 13815 9af23e798dccf51edbe98938c641893e ""
-  "main.aux" 1785610650.30442 2408 e35afa72ce7e732b49a08106af12d1eb "pdflatex"
-  "main.bbl" 1785610649.98641 1289 990aff0152388cb11fc10c6ac5105200 "bibtex main"
-  "main.tex" 1785610649.00939 12569 f5bc3bbe963ce00be32a52b44d65346c ""
+  "main.aux" 1785674833.80567 2534 f026c4c26ecc43f3ebc6991a29021d6f "pdflatex"
+  "main.bbl" 1785674833.47088 1289 990aff0152388cb11fc10c6ac5105200 "bibtex main"
+  "main.tex" 1785674832.83328 13797 45e1d9705ef7275c5e484986889de978 ""
   (generated)
   "main.aux"
   "main.log"
