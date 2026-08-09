@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wavelet 3D · Transformada Wavelet Contínua</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        * { box-sizing: border-box; font-family: 'Segoe UI', Roboto, system-ui, sans-serif; }
+        body {
+            background: #f0f4fe;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .app-card {
+            max-width: 1400px;
+            width: 100%;
+            background: white;
+            border-radius: 36px;
+            box-shadow: 0 24px 48px rgba(0,0,0,0.10);
+            padding: 28px 30px 35px;
+        }
+        h1 {
+            margin: 0 0 6px 0;
+            font-weight: 500;
+            font-size: 2rem;
+            color: #0b1a33;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .subhead {
+            color: #3a507a;
+            font-size: 0.95rem;
+            margin: 0 0 22px 0;
+            border-left: 4px solid #8b5cf6;
+            padding-left: 16px;
+            background: #f4f0ff;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.6;
+        }
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 24px;
+            margin-bottom: 28px;
+        }
+        .chart-box {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            border: 1px solid #e9edf4;
+        }
+        .chart-title {
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            color: #2c3e5c;
+            margin: 0 0 10px 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .chart-title span {
+            background: #e0e7ff;
+            padding: 0 12px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            color: #4338ca;
+        }
+        .canvas-wrapper {
+            position: relative;
+            height: 280px;
+        }
+        .canvas-wrapper-3d {
+            height: 360px;
+            background: #0a0e1a;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: grab;
+        }
+        .controls-panel {
+            background: #f8faff;
+            border-radius: 24px;
+            padding: 22px 25px;
+            border: 1px solid #e2e9f3;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-end;
+            gap: 28px 40px;
+        }
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            flex: 1 0 160px;
+        }
+        .control-group label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #1e2f4a;
+            display: flex;
+            justify-content: space-between;
+        }
+        .control-group label small {
+            font-weight: 400;
+            color: #5f7397;
+        }
+        input[type="range"] {
+            width: 100%;
+            height: 6px;
+            -webkit-appearance: none;
+            background: #d4dfec;
+            border-radius: 10px;
+            outline: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            background: #7c3aed;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(124, 58, 237, 0.3);
+            border: 2px solid white;
+        }
+        .value-badge {
+            background: #e6edf8;
+            padding: 2px 14px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #0b2a5c;
+        }
+        .tip {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            background: #eef3fb;
+            border-radius: 60px;
+            padding: 8px 24px 8px 20px;
+            margin-left: auto;
+            font-size: 0.9rem;
+            color: #1e3a6b;
+        }
+        .tip i {
+            font-style: normal;
+            background: #7c3aed;
+            color: white;
+            border-radius: 40px;
+            padding: 0 12px;
+            line-height: 1.8;
+        }
+        .footer-note {
+            margin-top: 22px;
+            text-align: center;
+            color: #5a6f92;
+            font-size: 0.9rem;
+            border-top: 1px solid #e4ebf5;
+            padding-top: 18px;
+        }
+        .footer-note strong {
+            color: #7c3aed;
+        }
+        @media (max-width: 900px) {
+            .grid-2col { grid-template-columns: 1fr; gap: 18px; }
+            .controls-panel { flex-direction: column; align-items: stretch; gap: 18px; }
+            .tip { margin-left: 0; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+<div class="app-card">
+    <h1>
+        🌊 Transformada Wavelet 3D
+        <span style="font-size: 1rem; font-weight: 400; color: #5b3d9e; margin-left: 8px;">CWT · escala × tempo</span>
+    </h1>
+    <div class="subhead">
+        ⚡ Ajuste a <strong>escala (a)</strong> e a <strong>translação (b)</strong> da wavelet mãe (Ricker).
+        O gráfico 3D mostra os coeficientes wavelet em função do tempo e da escala.
+    </div>
+
+    <div class="grid-2col">
+        <div class="chart-box">
+            <div class="chart-title">🧊 Coeficientes |W(a,b)| <span>3D interativo</span></div>
+            <div class="canvas-wrapper-3d" id="threeContainer"></div>
+        </div>
+        <div class="chart-box">
+            <div class="chart-title">📈 Sinal + Wavelet <span>escala & translação</span></div>
+            <div class="canvas-wrapper">
+                <canvas id="signalWaveletChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="controls-panel">
+        <div class="control-group">
+            <label>Escala (a) <small>“dilatação”</small></label>
+            <input type="range" id="scaleSlider" min="0.3" max="3.0" step="0.05" value="1.2">
+            <span class="value-badge" id="scaleValue">1.20</span>
+        </div>
+        <div class="control-group">
+            <label>Translação (b) <small>“posição”</small></label>
+            <input type="range" id="transSlider" min="-2.0" max="2.0" step="0.05" value="0.0">
+            <span class="value-badge" id="transValue">0.00</span>
+        </div>
+        <div class="tip">
+            <i>⇆</i> <span>↑ escala → wavelet mais larga · translação desloca</span>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        <strong>Wavelet de Ricker:</strong> ψ(t) = (1 - t²) exp(-t²/2) · 
+        A CWT é a correlação entre o sinal e a wavelet em cada escala e posição.
+    </div>
+</div>
+
+<script>
+    (function() {
+        // --- Elementos DOM ---
+        const scaleSlider = document.getElementById('scaleSlider');
+        const transSlider = document.getElementById('transSlider');
+        const scaleValue = document.getElementById('scaleValue');
+        const transValue = document.getElementById('transValue');
+        const container = document.getElementById('threeContainer');
+
+        // --- Chart 2D ---
+        const ctx2d = document.getElementById('signalWaveletChart').getContext('2d');
+        const chart2d = new Chart(ctx2d, {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [
+                    {
+                        label: 'sinal x(t)',
+                        data: [],
+                        borderColor: '#2563eb',
+                        backgroundColor: 'rgba(37, 99, 235, 0.08)',
+                        borderWidth: 2,
+                        pointRadius: 0,
+                        fill: true,
+                        tension: 0.2
+                    },
+                    {
+                        label: 'wavelet ψ(t)',
+                        data: [],
+                        borderColor: '#dc2626',
+                        borderWidth: 2.5,
+                        pointRadius: 0,
+                        fill: false,
+                        tension: 0.2,
+                        borderDash: [6, 4]
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                animation: { duration: 0 },
+                plugins: {
+                    legend: { display: true, labels: { boxWidth: 12, font: { size: 9 } } }
+                },
+                scales: {
+                    x: { 
+                        title: { display: true, text: 'tempo (s)', color: '#2f4870', font: { size: 9 } },
+                        grid: { color: '#e9edf4' },
+                        ticks: { color: '#4b5d7a', font: { size: 8 } }
+                    },
+                    y: { 
+                        title: { display: true, text: 'amplitude', color: '#2f4870', font: { size: 9 } },
+                        grid: { color: '#e9edf4' },
+                        ticks: { color: '#4b5d7a', font: { size: 8 } }
+                    }
+                }
+            }
+        });
+
+        // --- Funções ---
+        function ricker(t) {
+            return (1 - t*t) * Math.exp(-t*t / 2);
+        }
+
+        function signal(t) {
+            const gauss = Math.exp(-t*t * 1.8);
+            const carrier = Math.cos(2 * Math.PI * 1.8 * t);
+            const noise = 0.08 * Math.sin(2 * Math.PI * 7.0 * t) + 0.05 * Math.cos(2 * Math.PI * 13.0 * t);
+            return gauss * carrier + noise;
+        }
+
+        // --- Three.js setup ---
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x0a0e1a);
+
+        const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 20);
+        camera.position.set(4.5, 3.5, 5.5);
+        camera.lookAt(0, 0.2, 0);
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        container.appendChild(renderer.domElement);
+
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.08;
+        controls.target.set(0, 0.2, 0);
+        controls.update();
+
+        // Luzes
+        const ambientLight = new THREE.AmbientLight(0x404060, 0.6);
+        scene.add(ambientLight);
+        const dirLight = new THREE.DirectionalLight(0xffffff, 1.2);
+        dirLight.position.set(1, 2, 1);
+        scene.add(dirLight);
+        const dirLight2 = new THREE.DirectionalLight(0x8888ff, 0.5);
+        dirLight2.position.set(-1, -1, -1);
+        scene.add(dirLight2);
+
+        // Eixos
+        const axesHelper = new THREE.AxesHelper(4);
+        scene.add(axesHelper);
+        const gridHelper = new THREE.GridHelper(6, 12, 0x445577, 0x223355);
+        gridHelper.position.y = -0.5;
+        scene.add(gridHelper);
+
+        // Objeto da superfície
+        let surfaceMesh = null;
+        let surfaceGeometry = null;
+
+        // --- Função para criar a superfície ---
+        function createSurface() {
+            const a = parseFloat(scaleSlider.value);
+            const b = parseFloat(transSlider.value);
+
+            const timePoints = 50;
+            const scalePoints = 40;
+            const tMin = -3.0, tMax = 3.0;
+            const sMin = 0.3, sMax = 3.2;
+
+            // Sinal em grade fina
+            const M = 400;
+            const tMin3 = -3.5, tMax3 = 3.5;
+            const tGrid = new Array(M);
+            const signalGrid = new Array(M);
+            for (let i = 0; i < M; i++) {
+                const t = tMin3 + (tMax3 - tMin3) * i / (M - 1);
+                tGrid[i] = t;
+                signalGrid[i] = signal(t);
+            }
+
+            // Calcular coeficientes
+            const vertices = [];
+            const colors = [];
+            const indices = [];
+            const dt = (tMax3 - tMin3) / M;
+            let maxVal = 0;
+            const coeffMatrix = [];
+
+            for (let j = 0; j < scalePoints; j++) {
+                const s = sMin + (sMax - sMin) * j / (scalePoints - 1);
+                const row = [];
+                for (let i = 0; i < timePoints; i++) {
+                    const t = tMin + (tMax - tMin) * i / (timePoints - 1);
+                    let sum = 0;
+                    for (let k = 0; k < M; k++) {
+                        const tau = tGrid[k];
+                        const arg = (tau - t) / s;
+                        const w = ricker(arg) / Math.sqrt(s);
+                        sum += signalGrid[k] * w * dt;
+                    }
+                    const val = Math.abs(sum);
+                    row.push(val);
+                    if (val > maxVal) maxVal = val;
+                }
+                coeffMatrix.push(row);
+            }
+            if (maxVal < 0.001) maxVal = 0.001;
+
+            // Construir geometria
+            for (let j = 0; j < scalePoints; j++) {
+                const s = sMin + (sMax - sMin) * j / (scalePoints - 1);
+                for (let i = 0; i < timePoints; i++) {
+                    const t = tMin + (tMax - tMin) * i / (timePoints - 1);
+                    const val = coeffMatrix[j][i] / maxVal * 1.2;
+                    vertices.push(t, val, s);
+
+                    const normalized = Math.min(val / 1.2, 1);
+                    const r = 0.1 + normalized * 0.9;
+                    const g = 0.1 + (1 - normalized) * 0.6;
+                    const b = 0.3 + (1 - normalized) * 0.7;
+                    colors.push(r, g, b);
+                }
+            }
+
+            for (let j = 0; j < scalePoints - 1; j++) {
+                for (let i = 0; i < timePoints - 1; i++) {
+                    const idx = j * timePoints + i;
+                    indices.push(idx, idx + 1, idx + timePoints);
+                    indices.push(idx + 1, idx + timePoints + 1, idx + timePoints);
+                }
+            }
+
+            const geometry = new THREE.BufferGeometry();
+            geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+            geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+            geometry.setIndex(indices);
+            geometry.computeVertexNormals();
+
+            const material = new THREE.MeshPhongMaterial({
+                vertexColors: true,
+                side: THREE.DoubleSide,
+                shininess: 30,
+                specular: new THREE.Color(0x222244),
+                transparent: true,
+                opacity: 0.92,
+                flatShading: false
+            });
+
+            return { mesh: new THREE.Mesh(geometry, material), geometry: geometry };
+        }
+
+        // --- Atualizar cena ---
+        function updateScene() {
+            // Remover superfície antiga
+            if (surfaceMesh) {
+                scene.remove(surfaceMesh);
+                if (surfaceGeometry) {
+                    surfaceGeometry.dispose();
+                }
+                if (surfaceMesh.material) {
+                    surfaceMesh.material.dispose();
+                }
+            }
+
+            // Criar nova superfície
+            const result = createSurface();
+            surfaceMesh = result.mesh;
+            surfaceGeometry = result.geometry;
+            scene.add(surfaceMesh);
+
+            // Atualizar gráfico 2D
+            const a = parseFloat(scaleSlider.value);
+            const b = parseFloat(transSlider.value);
+            scaleValue.textContent = a.toFixed(2);
+            transValue.textContent = b.toFixed(2);
+
+            const N = 200;
+            const tMin2 = -3.5, tMax2 = 3.5;
+            const labels2d = [];
+            const signalData = [];
+            const waveletData = [];
+
+            for (let i = 0; i < N; i++) {
+                const t = tMin2 + (tMax2 - tMin2) * i / (N - 1);
+                labels2d.push(t.toFixed(2));
+                signalData.push(signal(t));
+                const arg = (t - b) / a;
+                const w = ricker(arg) / Math.sqrt(a);
+                waveletData.push(w);
+            }
+
+            chart2d.data.labels = labels2d;
+            chart2d.data.datasets[0].data = signalData;
+            chart2d.data.datasets[1].data = waveletData;
+            chart2d.update('none');
+        }
+
+        // --- Eventos ---
+        scaleSlider.addEventListener('input', updateScene);
+        transSlider.addEventListener('input', updateScene);
+
+        // --- Loop de renderização ---
+        function animate() {
+            requestAnimationFrame(animate);
+            controls.update();
+            renderer.render(scene, camera);
+        }
+
+        // --- Inicialização ---
+        updateScene();
+        animate();
+
+        // --- Redimensionamento ---
+        function resizeRenderer() {
+            const width = container.clientWidth;
+            const height = container.clientHeight;
+            renderer.setSize(width, height);
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+        }
+
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                resizeRenderer();
+                chart2d.resize();
+            }, 100);
+        });
+
+        setTimeout(resizeRenderer, 100);
+    })();
+</script>
+</body>
+</html>

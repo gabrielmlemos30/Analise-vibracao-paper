@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dualidade Tempo-Frequência · Fourier Interativo</title>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+        }
+        body {
+            background: #f5f7fc;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .app-card {
+            max-width: 1300px;
+            width: 100%;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12), 0 8px 24px rgba(0,0,0,0.06);
+            padding: 28px 30px 35px;
+            transition: all 0.2s;
+        }
+        h1 {
+            margin: 0 0 8px 0;
+            font-weight: 500;
+            font-size: 2rem;
+            letter-spacing: -0.5px;
+            color: #0b1a33;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .subhead {
+            color: #3a507a;
+            font-size: 1rem;
+            margin: 0 0 25px 0;
+            border-left: 4px solid #3b82f6;
+            padding-left: 16px;
+            background: #f0f4ff;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.5;
+        }
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 28px;
+        }
+        .chart-box {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 12px 12px 8px 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            border: 1px solid #e9edf4;
+            transition: 0.2s;
+        }
+        .chart-box:hover {
+            border-color: #cbd5e1;
+        }
+        .chart-title {
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            color: #2c3e5c;
+            margin: 4px 0 12px 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .chart-title span {
+            background: #dbeafe;
+            padding: 0 10px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            color: #1d4ed8;
+        }
+        .canvas-wrapper {
+            position: relative;
+            height: 200px;
+        }
+        .controls-panel {
+            background: #f8faff;
+            border-radius: 24px;
+            padding: 22px 25px;
+            margin-top: 8px;
+            border: 1px solid #e2e9f3;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-end;
+            gap: 28px 40px;
+        }
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            flex: 1 0 160px;
+        }
+        .control-group label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #1e2f4a;
+            letter-spacing: 0.3px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .control-group label small {
+            font-weight: 400;
+            color: #5f7397;
+        }
+        input[type="range"] {
+            width: 100%;
+            height: 6px;
+            -webkit-appearance: none;
+            background: #d4dfec;
+            border-radius: 10px;
+            outline: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            background: #2563eb;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+            border: 2px solid white;
+        }
+        .value-badge {
+            background: #e6edf8;
+            padding: 2px 14px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #0b2a5c;
+        }
+        .dual-tip {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            background: #eef3fb;
+            border-radius: 60px;
+            padding: 8px 24px 8px 20px;
+            margin-left: auto;
+            font-size: 0.9rem;
+            color: #1e3a6b;
+        }
+        .dual-tip i {
+            font-style: normal;
+            background: #2563eb;
+            color: white;
+            border-radius: 40px;
+            padding: 0 12px;
+            line-height: 1.8;
+        }
+        .footer-note {
+            margin-top: 20px;
+            text-align: center;
+            color: #5a6f92;
+            font-size: 0.9rem;
+            border-top: 1px solid #e4ebf5;
+            padding-top: 18px;
+        }
+        .footer-note strong {
+            color: #1d4ed8;
+        }
+        @media (max-width: 800px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+            .controls-panel {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 18px;
+            }
+            .dual-tip {
+                margin-left: 0;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="app-card">
+    <h1>
+        🌊 Dualidade Tempo × Frequência
+        <span style="font-size: 1rem; font-weight: 400; color: #3b6bb0; margin-left: 8px;">Transformada de Fourier</span>
+    </h1>
+    <div class="subhead">
+        ⚡ Ajuste os parâmetros do sinal no domínio do tempo e observe a resposta em frequência — 
+        a largura do pulso e a frequência da senoide revelam a relação de incerteza.
+    </div>
+
+    <div class="dashboard">
+        <div class="chart-box">
+            <div class="chart-title">📈 Domínio do Tempo <span>sinal x(t)</span></div>
+            <div class="canvas-wrapper">
+                <canvas id="timeChart"></canvas>
+            </div>
+        </div>
+        <div class="chart-box">
+            <div class="chart-title">📉 Domínio da Frequência <span>|X(f)|</span></div>
+            <div class="canvas-wrapper">
+                <canvas id="freqChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="controls-panel">
+        <div class="control-group">
+            <label>Largura do pulso (τ) <small>“espalhamento temporal”</small></label>
+            <input type="range" id="tauSlider" min="0.3" max="4.0" step="0.05" value="1.8">
+            <span class="value-badge" id="tauValue">1.80</span>
+        </div>
+        <div class="control-group">
+            <label>Frequência da senoide (f₀) <small>“deslocamento espectral”</small></label>
+            <input type="range" id="freqSlider" min="0.0" max="5.0" step="0.1" value="2.0">
+            <span class="value-badge" id="freqValue">2.0 Hz</span>
+        </div>
+        <div class="dual-tip">
+            <i>⇆</i> <span>↑ τ → ↓ largura espectral &nbsp;·&nbsp; ↑ f₀ → translação</span>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        <strong>Propriedade didática:</strong> A transformada de Fourier de um pulso retangular <em>sinc</em> 
+        e a modulação (senoide) deslocam o espectro — a dualidade fica evidente: 
+        <span style="background: #dbeafe; padding: 0 10px; border-radius: 40px;">τ ⇄ 1/Δf</span>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // --- elementos DOM ---
+        const tauSlider = document.getElementById('tauSlider');
+        const freqSlider = document.getElementById('freqSlider');
+        const tauValue = document.getElementById('tauValue');
+        const freqValue = document.getElementById('freqValue');
+
+        // --- Canvas & charts ---
+        const ctxTime = document.getElementById('timeChart').getContext('2d');
+        const ctxFreq = document.getElementById('freqChart').getContext('2d');
+
+        // Configuração comum para ambos os charts
+        const commonOpts = {
+            responsive: true,
+            maintainAspectRatio: false,
+            animation: { duration: 0 },
+            plugins: {
+                legend: { display: false },
+                tooltip: { enabled: false }
+            },
+            scales: {
+                x: { 
+                    display: true,
+                    grid: { color: '#e9edf4', drawBorder: false },
+                    ticks: { color: '#4b5d7a', font: { size: 9 } }
+                },
+                y: { 
+                    display: true,
+                    grid: { color: '#e9edf4', drawBorder: false },
+                    ticks: { color: '#4b5d7a', font: { size: 9 }, stepSize: 0.5 }
+                }
+            }
+        };
+
+        // --- gráfico tempo ---
+        const timeChart = new Chart(ctxTime, {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: 'x(t)',
+                    data: [],
+                    borderColor: '#2563eb',
+                    backgroundColor: 'rgba(37, 99, 235, 0.05)',
+                    borderWidth: 2.5,
+                    pointRadius: 0,
+                    fill: true,
+                    tension: 0.2
+                }]
+            },
+            options: {
+                ...commonOpts,
+                scales: {
+                    ...commonOpts.scales,
+                    x: { 
+                        ...commonOpts.scales.x,
+                        title: { display: true, text: 'tempo (s)', color: '#2f4870', font: { size: 9 } }
+                    },
+                    y: { 
+                        ...commonOpts.scales.y,
+                        title: { display: true, text: 'amplitude', color: '#2f4870', font: { size: 9 } }
+                    }
+                }
+            }
+        });
+
+        // --- gráfico frequência ---
+        const freqChart = new Chart(ctxFreq, {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: '|X(f)|',
+                    data: [],
+                    borderColor: '#dc2626',
+                    backgroundColor: 'rgba(220, 38, 38, 0.06)',
+                    borderWidth: 2.5,
+                    pointRadius: 0,
+                    fill: true,
+                    tension: 0.2
+                }]
+            },
+            options: {
+                ...commonOpts,
+                scales: {
+                    ...commonOpts.scales,
+                    x: { 
+                        ...commonOpts.scales.x,
+                        title: { display: true, text: 'frequência (Hz)', color: '#2f4870', font: { size: 9 } }
+                    },
+                    y: { 
+                        ...commonOpts.scales.y,
+                        title: { display: true, text: 'magnitude', color: '#2f4870', font: { size: 9 } }
+                    }
+                }
+            }
+        });
+
+        // --- funções de atualização ---
+        function updatePlots() {
+            const tau = parseFloat(tauSlider.value);
+            const f0 = parseFloat(freqSlider.value);
+
+            // Atualiza labels
+            tauValue.textContent = tau.toFixed(2);
+            freqValue.textContent = f0.toFixed(1) + ' Hz';
+
+            // --- domínio do tempo: pulso retangular modulado (senoide) ---
+            const timePoints = 300;
+            const tMin = -3.0;
+            const tMax = 3.0;
+            const timeLabels = [];
+            const timeData = [];
+
+            for (let i = 0; i < timePoints; i++) {
+                const t = tMin + (tMax - tMin) * i / (timePoints - 1);
+                timeLabels.push(t.toFixed(2));
+                // pulso retangular: |t| < tau/2 ? 1 : 0
+                let rect = (Math.abs(t) < tau/2) ? 1.0 : 0.0;
+                // modulação com cosseno (senoide)
+                const carrier = Math.cos(2 * Math.PI * f0 * t);
+                const signal = rect * carrier;
+                timeData.push(signal);
+            }
+
+            timeChart.data.labels = timeLabels;
+            timeChart.data.datasets[0].data = timeData;
+            timeChart.update('none');
+
+            // --- domínio da frequência: transformada de Fourier (analítica) ---
+            // X(f) = τ * sinc(τ (f - f0))  (deslocamento)
+            // Usamos sinc(x) = sin(π x) / (π x), com correção para x=0
+            const freqPoints = 400;
+            const fMin = -5.5;
+            const fMax = 5.5;
+            const freqLabels = [];
+            const freqData = [];
+
+            // evitar divisão por zero
+            function sincVal(x) {
+                if (Math.abs(x) < 1e-12) return 1.0;
+                return Math.sin(Math.PI * x) / (Math.PI * x);
+            }
+
+            for (let i = 0; i < freqPoints; i++) {
+                const f = fMin + (fMax - fMin) * i / (freqPoints - 1);
+                freqLabels.push(f.toFixed(2));
+                // X(f) = τ * sinc(τ (f - f0))   (módulo)
+                const arg = tau * (f - f0);
+                const magnitude = tau * Math.abs(sincVal(arg));
+                freqData.push(magnitude);
+            }
+
+            freqChart.data.labels = freqLabels;
+            freqChart.data.datasets[0].data = freqData;
+            freqChart.update('none');
+        }
+
+        // --- eventos ---
+        tauSlider.addEventListener('input', updatePlots);
+        freqSlider.addEventListener('input', updatePlots);
+
+        // --- inicialização ---
+        updatePlots();
+
+        // redimensionamento suave
+        let resizeTimer;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                timeChart.resize();
+                freqChart.resize();
+            }, 100);
+        });
+    })();
+</script>
+
+</body>
+</html>

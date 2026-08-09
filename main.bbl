@@ -7,7 +7,8 @@
 \providecommand{\BIBentrySTDinterwordspacing}{\spaceskip=0pt\relax}
 \providecommand{\BIBentryALTinterwordstretchfactor}{4}
 \providecommand{\BIBentryALTinterwordspacing}{\spaceskip=\fontdimen2\font plus
-\BIBentryALTinterwordstretchfactor\fontdimen3\font minus \fontdimen4\font\relax}
+\BIBentryALTinterwordstretchfactor\fontdimen3\font minus
+  \fontdimen4\font\relax}
 \providecommand{\BIBforeignlanguage}[2]{{%
 \expandafter\ifx\csname l@#1\endcsname\relax
 \typeout{** WARNING: IEEEtran.bst: No hyphenation pattern has been}%
@@ -21,9 +22,35 @@
 \BIBdecl
 
 \bibitem{girdhar2004practical}
-P.~Girdhar and C.~Scheffer, \emph{Practical Machinery Vibration Analysis and Predictive Maintenance}.\hskip 1em plus 0.5em minus 0.4em\relax Oxford: Elsevier, 2004.
+P.~Girdhar and C.~Scheffer, \emph{Practical Machinery Vibration Analysis and
+  Predictive Maintenance}.\hskip 1em plus 0.5em minus 0.4em\relax Oxford:
+  Elsevier, 2004.
 
 \bibitem{deac2010modern}
-V.~Deac, G.~C{\^a}rstea, C.~B{\^a}gu, and F.~P{\^a}rvu, ``The modern approach to industrial maintenance management,'' \emph{Informatica Economic{\u{a}}}, vol.~14, no.~2, pp. 133--140, 2010.
+V.~Deac, G.~C{\^a}rstea, C.~B{\^a}gu, and F.~P{\^a}rvu, ``The modern approach
+  to industrial maintenance management,'' \emph{Informatica Economic{\u{a}}},
+  vol.~14, no.~2, pp. 133--140, 2010.
+
+\bibitem{randall2011vibration}
+R.~B. Randall, \emph{Vibration-based Condition Monitoring: Industrial,
+  Aerospace and Automotive Applications}.\hskip 1em plus 0.5em minus
+  0.4em\relax Chichester, West Sussex, United Kingdom: John Wiley \& Sons,
+  2011.
+
+\bibitem{iso17359_2018}
+{ISO 17359}, ``Condition monitoring and diagnostics of machines — general
+  guidelines,'' International Organization for Standardization, Standard, 2018.
+
+\bibitem{santos2023analise}
+J.~C. dos Santos, J.~S. Alves, L.~I. da~Rocha, and P.~H.~C. Bernardo,
+  ``An{\'a}lise de vibra{\c{c}}{\~a}o em motores el{\'e}tricos da classe 1 da
+  norma {ISO} 10816,'' \emph{Trabalho de Conclus{\~a}o de Curso
+  (Gradua{\c{c}}{\~a}o em Engenharia El{\'e}trica)}, 2023, orientador: Marcelo
+  Gomes De Paoli.
+
+\bibitem{oppenheim2010discrete}
+A.~V. Oppenheim and R.~W. Schafer, \emph{Discrete-Time Signal Processing},
+  3rd~ed.\hskip 1em plus 0.5em minus 0.4em\relax Upper Saddle River, NJ:
+  Pearson, 2010.
 
 \end{thebibliography}
