@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex main"] 1786279664.88188 "main.aux" "main.bbl" "main" 1786279666.7088 0
+["bibtex main"] 1786749139.60606 "main.aux" "main.bbl" "main" 1786749142.24725 0
   "./IEEEtran.bst" 1785675510 61632 bc5380b3434a66b895bbc75d3d380540 ""
   "./references.bib" 1785675510 9990 eee963325453b1d9530fe1e8fdc54a61 ""
-  "main.aux" 1786279665 3593 74bcfc5ebe5d40b2166e2098f8148538 "pdflatex"
+  "main.aux" 1786749141 3842 8681d5542cc7c0e2ae4e19b176d8e3a3 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1786279665.18573 "c:/Users/gabri/Code/Analise-vibracao-paper/main.tex" "main.pdf" "main" 1786279666.70943 0
+["pdflatex"] 1786749140.11527 "c:/Users/gabri/Code/Analise-vibracao-paper/main.tex" "main.pdf" "main" 1786749142.24792 0
   "C:/Users/gabri/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1786278533 82507 a9eef8696c92627b87e9975edea03b2a ""
   "C:/Users/gabri/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1774814192 13333487 87f4c4f130f5bc7e7e1dab44a37505fc ""
   "C:/Users/gabri/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc" 1458473887 4993 80dc9bab7f31fb78a000ccfed0e27cab ""
@@ -99,10 +99,10 @@
   "Figuras/prot_01.png" 1776803254 3243 683d3772455b3cda1b8defe20708a907 ""
   "Figuras/proto_03.png" 1776803247 35982 921084b250565127b3499b4a1906b735 ""
   "IEEEtran.cls" 1785675510 288304 5b2e4fa15b0f7eabb840ebf67df4c0f7 ""
-  "c:/Users/gabri/Code/Analise-vibracao-paper/main.tex" 1786279662 20948 4480c2a09712f4e1924a3b4e50d1e507 ""
-  "main.aux" 1786279665 3593 74bcfc5ebe5d40b2166e2098f8148538 "pdflatex"
-  "main.bbl" 1786279665 2327 05051d4b9adff282a85bec6ac11b6ba6 "bibtex main"
-  "main.tex" 1786279662 20948 4480c2a09712f4e1924a3b4e50d1e507 ""
+  "c:/Users/gabri/Code/Analise-vibracao-paper/main.tex" 1786749137 26179 b5eed8365e6662ec2f80d3f95af6b8da ""
+  "main.aux" 1786749141 3842 8681d5542cc7c0e2ae4e19b176d8e3a3 "pdflatex"
+  "main.bbl" 1786749139 2327 05051d4b9adff282a85bec6ac11b6ba6 "bibtex main"
+  "main.tex" 1786749137 26179 b5eed8365e6662ec2f80d3f95af6b8da ""
   (generated)
   "main.aux"
   "main.log"

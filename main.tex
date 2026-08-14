@@ -19,7 +19,7 @@
 
 \begin{document}
 
-\title{Sistema de Apoio à Manutenção Preditiva*\\
+\title{Sistema de Apoio à Manutenção Preditiva Baseado na Análise de Vibração *\\
 {\footnotesize \textsuperscript{*}Note: Sub-titles are not captured for https://ieeexplore.ieee.org  and
 should not be used}
 \thanks{Identify applicable funding agency here. If none, delete this.}
@@ -266,7 +266,7 @@ Outra técnica complementar empregada na análise de vibrações é a Transforma
 \tilde{x}(t) =
 \frac{1}{\pi}
 \int_{-\infty}^{+\infty}
-\frac{x(\tau)}{t-\tau}d\tau,
+\frac{x(\tau)}{t-\tau}\tau
 \label{equation:hilbert}
 \end{equation}
 
@@ -339,8 +339,36 @@ O custo dos componentes é apresentado na Tabela \ref{tab:custos_componentes}, c
     \par {\footnotesize Fonte: Elaborado pelo autor.}
 \end{table}
 \subsection{Software}
+Para a programação do microcontrolador ESP32-C3, utilizou-se a linguagem C++ por meio da IDE \textit{PlatformIO} (extensão do \textit{Visual Studio Code}). A escolha dessa ferramenta justifica-se por oferecer um controle mais rigoroso sobre os recursos de \textit{hardware} em comparação à IDE Arduino convencional.
 
-Após a definição dos componentes, 
+A interface gráfica e o processamento de dados foram desenvolvidos na linguagem 
+\textit{Python}, utilizando o \textit{framework PySide6}. Para a manipulação das 
+estruturas de dados, empregou-se a biblioteca \textit{NumPy}, enquanto a biblioteca 
+\textit{SciPy} foi utilizada para a aplicação de métodos matemáticos discretos, 
+tais como as transformadas de Hilbert e de Fourier. A persistência de dados em 
+nuvem foi realizada por meio da biblioteca \textit{firebase-admin}, responsável pela 
+integração com o banco de dados \textit{Firebase}, o qual viabilizou o 
+armazenamento de informações de gerenciamento de equipamentos, alarmes, usuários e 
+nomes de arquivos processados.
+
+No que tange aos ambientes de desenvolvimento (IDEs), utilizaram-se o \textit{PyCharm} e o \textit{VS Code}. Adicionalmente, para a concepção da interface gráfica, empregou-se o \textit{Qt Designer}, ferramenta que permite a montagem visual da interface, otimizando o desenvolvimento ao evitar a codificação manual exaustiva dos elementos gráficos do \textit{PySide6}.
+
+\section{Desenvolvimento do Sistema Proposto}
+\subsection{Arquitetura do Sistema}
+Iniciou-se a aquisição dos dados brutos de aceleração através do sensor acelerômetro \textit{ADXL345} e o tratamento desses dados pelo microcontrolador ESP32-C3. Com essa combinação, o sistema opera em três formas distintas. A configuração do modo de operação é feito através da interface supervisória estes são: \textit{modo online}, \textit{modo offline} e \textit{modo serial}. 
+
+No modo \textit{online}, ou monitoramento continuo,  o dispositivo fica conectado à internet via \textit{Wi-Fi}, e utiliza o protocolo de comunicação \textit{Web-Socket}, devido a capacidade de utilização de \textit{callback}, permitindo que fique aguardando o recebimento de dados sem necessitar de autênticação com o host.Para este modo, o operador deve configurar o endereço IP do host, as credenciais da rede Wi-Fi e selecionar a opção correspondente no supervisório antes de iniciar a coleta. A principal limitação deste modo reside no elevado consumo de corrente, aproximadamente 220 mA durante a transmissão, o que demanda o uso de uma fonte de alimentação externa, dada a capacidade limitada da bateria de 600 mAh.
+
+O modo de operação \textit{offline} visa mitigar o consumo energético do dispositivo. Nesta configuração, o sensor realiza coletas periódicas programadas e, caso um limiar de severidade seja atingido, a amostra de dados é transmitida em formato binário para a plataforma \textit{Google Drive}. A escolha dessa ferramenta fundamentou-se na facilidade de sincronização local, visto que o operador, ao utilizar o aplicativo cliente da plataforma em sua estação de trabalho, dispõe dos arquivos binários diretamente em um diretório local do computador. Dessa forma, torna-se viável acessar e processar esses arquivos posteriormente na interface gráfica, resultando em diagnósticos equivalentes ao monitoramento em tempo real, os quais são devidamente registrados no prontuário do ativo.
+
+O modo de operação \textit{serial} combina baixa latência e alimentação estável via barramento USB, eliminando o consumo da bateria. Neste modo, cada verificação de alarme é disparada manualmente pelo comando "MODO SERIAL".
+
+O segundo processo compreende o monitoramento e a arquitetura de análise dos dados. Ao iniciar a aquisição, o sistema supervisório coleta as amostras e realiza a plotagem de gráficos nos domínios do tempo e da frequência. Sequencialmente, são calculados os valores RMS e de pico. Caso esses valores excedam os limites pré-estabelecidos pelo usuário, distintos dos limiares de criticidade da norma ISO 10816, o sistema verifica a ocorrência de alarmes prévios no ciclo vigente.
+
+Inexistindo alarmes anteriores, procedem-se aos algoritmos de PDS para identificar a falha associada ao excesso de energia vibratória, culminando no envio de um e-mail com o diagnóstico provável. Caso os limiares de RMS e pico não sejam atingidos, ou se um alarme já tiver sido registrado no ciclo atual, o sistema mantém apenas a atualização dos gráficos.
+
+Vale ressaltar que a calibração personalizada dos limiares de valor RMS e de pico é de responsabilidade do usuário administrador. Não obstante, o sistema fornece os limites estabelecidos pela norma ISO 10816, segmentados por severidade de alarme e classe de equipamento, servindo como base de referência técnica, conforme ilustrado no Quadro \ref{quadro:niveis_severidade}. Essa funcionalidade permite que o operador defina limiares específicos entre os níveis normatizados, por exemplo, caso se deseje que o alarme seja disparado apenas ao atingir a severidade D (estado crítico), é possível ajustar o limiar precisamente entre os limites definidos pela norma para essa categoria.
+
 
 % Utiliza o estilo padrão exigido pela IEEE (numérico em ordem de citação)
 \bibliographystyle{IEEEtran}

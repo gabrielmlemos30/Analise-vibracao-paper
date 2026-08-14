@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.29)  9 AUG 2026 09:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.29)  14 AUG 2026 20:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -365,19 +365,20 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Calculating math sizes for size <11> on input line 40.
 
-
-pdfTeX warning: pdflatex (file ./Figuras/diagrama.pdf): PDF inclusion: found PD
-F version <1.7>, but at most version <1.5> allowed
-<Figuras/diagrama.pdf, id=1, 459.31601pt x 915.11888pt>
-File: Figuras/diagrama.pdf Graphic file (type pdf)
-<use Figuras/diagrama.pdf>
-Package pdftex.def Info: Figuras/diagrama.pdf  used on input line 90.
-(pdftex.def)             Requested size: 252.0pt x 502.07417pt.
 [1{C:/Users/gabri/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/ga
 bri/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}
 
 
 ]
+
+pdfTeX warning: pdflatex (file ./Figuras/diagrama.pdf): PDF inclusion: found PD
+F version <1.7>, but at most version <1.5> allowed
+<Figuras/diagrama.pdf, id=9, 459.31601pt x 915.11888pt>
+File: Figuras/diagrama.pdf Graphic file (type pdf)
+<use Figuras/diagrama.pdf>
+Package pdftex.def Info: Figuras/diagrama.pdf  used on input line 90.
+(pdftex.def)             Requested size: 252.0pt x 502.07417pt.
+
 Underfull \hbox (badness 1852) in paragraph at lines 95--96
 []\OT1/ptm/m/n/10 Entre as difer-entes grandezas uti-lizadas no mon-i-tora-
  []
@@ -396,7 +397,7 @@ Underfull \hbox (badness 1603) in paragraph at lines 101--102
 LaTeX Warning: Reference `quadro' on page 2 undefined on input line 120.
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 3690) has occurred while \output is active []
 
  [2 <./Figuras/diagrama.pdf>]
 Overfull \hbox (4.47707pt too wide) in paragraph at lines 162--162
@@ -424,9 +425,6 @@ Overfull \hbox (2.0528pt too wide) in paragraph at lines 130--225
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 Underfull \hbox (badness 1533) in paragraph at lines 263--264
 []\OT1/ptm/m/n/10 Outra t[]ecnica com-ple-men-tar em-pre-gada na an[]alise de
  []
@@ -447,7 +445,11 @@ LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 3
  (C:\Users\gabri\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-(main.bbl
+Underfull \hbox (badness 4193) in paragraph at lines 342--343
+[]\OT1/ptm/m/n/10 Para a programa[][]ao do mi-cro-con-tro-lador ESP32-C3,
+ []
+
+[4 <./Figuras/prot_01.png> <./Figuras/proto_03.png>] (main.bbl
 Underfull \hbox (badness 3407) in paragraph at lines 35--39
 []\OT1/ptm/m/n/8 R. B. Ran-dall, \OT1/ptm/m/it/8 Vibration-based Con-di-tion Mo
 n-i-tor-ing: In-dus-trial,
@@ -465,7 +467,7 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[4 <./Figuras/prot_01.png> <./Figuras/proto_03.png>] (main.aux)
+[5] (main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
@@ -478,7 +480,7 @@ LaTeX Warning: There were undefined references.
 Here is how much of TeX's memory you used:
  4627 strings out of 467871
  73188 string characters out of 5418376
- 525471 words of memory out of 5000000
+ 526471 words of memory out of 5000000
  33439 multiletter control sequences out of 15000+600000
  677529 words of font info for 139 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -497,9 +499,9 @@ Users/gabri/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/
 Users/gabri/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:
 /Users/gabri/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:
 /Users/gabri/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (4 pages, 236367 bytes).
+Output written on main.pdf (5 pages, 244309 bytes).
 PDF statistics:
- 125 PDF objects out of 1000 (max. 8388607)
+ 128 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
