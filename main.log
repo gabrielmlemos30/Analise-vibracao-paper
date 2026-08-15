@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.29)  14 AUG 2026 20:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.29)  15 AUG 2026 14:23
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -303,10 +303,20 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \@lastruleclass=\count311
 \@thisrulewidth=\dimen197
 )
+(C:\Users\gabri\AppData\Local\Programs\MiKTeX\tex/latex/tools\tabularx.sty
+Package: tabularx 2023/12/11 v2.12a `tabularx' package (DPC)
+\TX@col@width=\dimen198
+\TX@old@table=\dimen199
+\TX@old@col=\dimen256
+\TX@target=\dimen257
+\TX@delta=\dimen258
+\TX@cols=\count312
+\TX@ftn=\toks28
+)
 (C:\Users\gabri\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
 tex.def
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count312
+\l__color_backend_stack_int=\count313
 ) (main.aux)
 \openout1 = `main.aux'.
 
@@ -330,17 +340,17 @@ LaTeX Font Info:    ... okay on input line 20.
 (C:\Users\gabri\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
 ii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count313
-\scratchdimen=\dimen198
+\scratchcounter=\count314
+\scratchdimen=\dimen259
 \scratchbox=\box61
-\nofMPsegments=\count314
-\nofMParguments=\count315
-\everyMPshowfont=\toks28
-\MPscratchCnt=\count316
-\MPscratchDim=\dimen199
-\MPnumerator=\count317
-\makeMPintoPDFobject=\count318
-\everyMPtoPDFconversion=\toks29
+\nofMPsegments=\count315
+\nofMParguments=\count316
+\everyMPshowfont=\toks29
+\MPscratchCnt=\count317
+\MPscratchDim=\dimen260
+\MPnumerator=\count318
+\makeMPintoPDFobject=\count319
+\everyMPtoPDFconversion=\toks30
 )
 (C:\Users\gabri\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
 ase.sty
@@ -394,9 +404,6 @@ Underfull \hbox (badness 1603) in paragraph at lines 101--102
  []
 
 
-LaTeX Warning: Reference `quadro' on page 2 undefined on input line 120.
-
-
 Underfull \vbox (badness 3690) has occurred while \output is active []
 
  [2 <./Figuras/diagrama.pdf>]
@@ -425,7 +432,11 @@ Overfull \hbox (2.0528pt too wide) in paragraph at lines 130--225
  []
 
 
-Underfull \hbox (badness 1533) in paragraph at lines 263--264
+LaTeX Warning: Reference `table:diagnostico_defeitos' on page 3 undefined on in
+put line 232.
+
+
+Underfull \hbox (badness 1533) in paragraph at lines 293--294
 []\OT1/ptm/m/n/10 Outra t[]ecnica com-ple-men-tar em-pre-gada na an[]alise de
  []
 
@@ -433,23 +444,86 @@ Underfull \hbox (badness 1533) in paragraph at lines 263--264
 <Figuras/prot_01.png, id=63, 243.15843pt x 285.31593pt>
 File: Figuras/prot_01.png Graphic file (type png)
 <use Figuras/prot_01.png>
-Package pdftex.def Info: Figuras/prot_01.png  used on input line 304.
+Package pdftex.def Info: Figuras/prot_01.png  used on input line 334.
 (pdftex.def)             Requested size: 126.0pt x 147.8427pt.
 <Figuras/proto_03.png, id=64, 243.15843pt x 285.31593pt>
 File: Figuras/proto_03.png Graphic file (type png)
 <use Figuras/proto_03.png>
-Package pdftex.def Info: Figuras/proto_03.png  used on input line 313.
+Package pdftex.def Info: Figuras/proto_03.png  used on input line 343.
 (pdftex.def)             Requested size: 126.0pt x 147.8427pt.
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 3
-30.
+62.
  (C:\Users\gabri\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-Underfull \hbox (badness 4193) in paragraph at lines 342--343
-[]\OT1/ptm/m/n/10 Para a programa[][]ao do mi-cro-con-tro-lador ESP32-C3,
+[4 <./Figuras/prot_01.png> <./Figuras/proto_03.png>]
+Underfull \hbox (badness 2285) in paragraph at lines 388--389
+[]\OT1/ptm/m/n/10 O sis-tema pro-posto foi de-sen-volvido para re-alizar a
  []
 
-[4 <./Figuras/prot_01.png> <./Figuras/proto_03.png>] (main.bbl
+
+Underfull \hbox (badness 1681) in paragraph at lines 390--391
+[]\OT1/ptm/m/n/10 No modo \OT1/ptm/m/it/10 on-line\OT1/ptm/m/n/10 , tamb[]em de
+-nom-i-nado mon-i-tora-mento
+ []
+
+[5]
+<Figuras/supervisorioMain.png, id=74, 1012.5328pt x 536.75531pt>
+File: Figuras/supervisorioMain.png Graphic file (type png)
+<use Figuras/supervisorioMain.png>
+Package pdftex.def Info: Figuras/supervisorioMain.png  used on input line 430.
+(pdftex.def)             Requested size: 252.0pt x 133.58241pt.
+<Figuras/motoTeste.png, id=75, 262.73157pt x 338.76563pt>
+File: Figuras/motoTeste.png Graphic file (type png)
+<use Figuras/motoTeste.png>
+Package pdftex.def Info: Figuras/motoTeste.png  used on input line 451.
+(pdftex.def)             Requested size: 126.0pt x 162.46608pt.
+<Figuras/sensor_fix.jpg, id=76, 1606.0pt x 1204.5pt>
+File: Figuras/sensor_fix.jpg Graphic file (type jpg)
+<use Figuras/sensor_fix.jpg>
+Package pdftex.def Info: Figuras/sensor_fix.jpg  used on input line 462.
+(pdftex.def)             Requested size: 239.39923pt x 179.54607pt.
+<Figuras/normal_velocidade_30.png, id=77, 800.9925pt x 447.92343pt>
+File: Figuras/normal_velocidade_30.png Graphic file (type png)
+<use Figuras/normal_velocidade_30.png>
+Package pdftex.def Info: Figuras/normal_velocidade_30.png  used on input line 4
+79.
+(pdftex.def)             Requested size: 239.39923pt x 133.87228pt.
+<Figuras/normal_aceleracao_30.png, id=78, 807.015pt x 442.65375pt>
+File: Figuras/normal_aceleracao_30.png Graphic file (type png)
+<use Figuras/normal_aceleracao_30.png>
+Package pdftex.def Info: Figuras/normal_aceleracao_30.png  used on input line 4
+89.
+(pdftex.def)             Requested size: 239.39923pt x 131.31119pt.
+<Figuras/normal_velocidade_fft_30.png, id=79, 801.74532pt x 436.63126pt>
+File: Figuras/normal_velocidade_fft_30.png Graphic file (type png)
+<use Figuras/normal_velocidade_fft_30.png>
+Package pdftex.def Info: Figuras/normal_velocidade_fft_30.png  used on input li
+ne 501.
+(pdftex.def)             Requested size: 239.39923pt x 130.37744pt.
+ [6 <./Figuras/supervisorioMain.png>]
+<Figuras/normal_aceleraca_fft_30.png, id=84, 804.00375pt x 449.42906pt>
+File: Figuras/normal_aceleraca_fft_30.png Graphic file (type png)
+<use Figuras/normal_aceleraca_fft_30.png>
+Package pdftex.def Info: Figuras/normal_aceleraca_fft_30.png  used on input lin
+e 513.
+(pdftex.def)             Requested size: 239.39923pt x 133.82166pt.
+ [7 <./Figuras/motoTeste.png> <./Figuras/sensor_fix.jpg> <./Figuras/normal_velo
+cidade_30.png> <./Figuras/normal_aceleracao_30.png> <./Figuras/normal_velocidad
+e_fft_30.png> <./Figuras/normal_aceleraca_fft_30.png>]
+<Figuras/normal_hilbert_fft_30.png, id=94, 804.75656pt x 438.8897pt>
+File: Figuras/normal_hilbert_fft_30.png Graphic file (type png)
+<use Figuras/normal_hilbert_fft_30.png>
+Package pdftex.def Info: Figuras/normal_hilbert_fft_30.png  used on input line 
+527.
+(pdftex.def)             Requested size: 239.39923pt x 130.55623pt.
+<Figuras/normal_wavelet_aceleracao_30.png, id=95, 807.015pt x 439.6425pt>
+File: Figuras/normal_wavelet_aceleracao_30.png Graphic file (type png)
+<use Figuras/normal_wavelet_aceleracao_30.png>
+Package pdftex.def Info: Figuras/normal_wavelet_aceleracao_30.png  used on inpu
+t line 541.
+(pdftex.def)             Requested size: 239.39923pt x 130.41791pt.
+ (main.bbl
 Underfull \hbox (badness 3407) in paragraph at lines 35--39
 []\OT1/ptm/m/n/8 R. B. Ran-dall, \OT1/ptm/m/it/8 Vibration-based Con-di-tion Mo
 n-i-tor-ing: In-dus-trial,
@@ -467,7 +541,8 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[5] (main.aux)
+[8 <./Figuras/normal_hilbert_fft_30.png> <./Figuras/normal_wavelet_aceleracao_3
+0.png>] (main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
@@ -478,13 +553,13 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 4627 strings out of 467871
- 73188 string characters out of 5418376
- 526471 words of memory out of 5000000
- 33439 multiletter control sequences out of 15000+600000
+ 4767 strings out of 467871
+ 76965 string characters out of 5418376
+ 532866 words of memory out of 5000000
+ 33576 multiletter control sequences out of 15000+600000
  677529 words of font info for 139 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,16n,83p,1433b,318s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,16n,83p,1439b,369s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/gabri/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmex10.pfb><C:/Users/gabri/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
 fonts/cm/cmmi10.pfb><C:/Users/gabri/AppData/Local/Programs/MiKTeX/fonts/type1/p
@@ -499,9 +574,9 @@ Users/gabri/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/
 Users/gabri/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:
 /Users/gabri/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:
 /Users/gabri/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (5 pages, 244309 bytes).
+Output written on main.pdf (8 pages, 775900 bytes).
 PDF statistics:
- 128 PDF objects out of 1000 (max. 8388607)
+ 156 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 61 words of extra memory for PDF output out of 10000 (max. 10000000)
 

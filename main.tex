@@ -11,7 +11,7 @@
 \usepackage[table]{xcolor}
 \usepackage{array}
 \usepackage{booktabs}
-
+\usepackage{tabularx}      % Para o ambiente tabularx
 \newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
 
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
@@ -117,7 +117,7 @@ z_i(t) = C_i \sin(2\pi f_i t + \alpha_i),
 
 em que $A_i$, $B_i$ e $C_i$ representam as amplitudes das componentes nos respectivos eixos, $f_i$ corresponde à frequência da componente harmônica e $\phi_i$, $\theta_i$ e $\alpha_i$ representam suas respectivas fases.
 
-A análise desses sinais pode ser realizada tanto no domínio do tempo quanto no domínio da frequência. No domínio do tempo, a representação do sinal permite avaliar a evolução da amplitude da vibração e extrair indicadores estatísticos, como o valor eficaz (\textit{Root Mean Square} -- RMS). Quando expresso em velocidade de vibração (mm/s), esse indicador pode ser utilizado para avaliar a severidade vibratória do equipamento, conforme sua classe de aplicação, estabelecida de acordo com características construtivas e porte da máquina, conforme apresentado no Quadro~\ref{quadro}. Essa classificação permite relacionar quantitativamente o nível de vibração medido com diferentes condições de operação, auxiliando na avaliação da condição do equipamento. No domínio da frequência, por sua vez, a análise espectral possibilita identificar as componentes de frequência presentes no sinal. Para essa finalidade, emprega-se a Transformada Discreta de Fourier (DFT), cuja implementação computacional eficiente pode ser realizada por meio da Transformada Rápida de Fourier (\textit{Fast Fourier Transform} -- FFT). A representação no domínio da frequência permite, portanto, identificar componentes espectrais associadas ao comportamento dinâmico do equipamento \cite{girdhar2004practical,randall2011vibration}.
+A análise desses sinais pode ser realizada tanto no domínio do tempo quanto no domínio da frequência. No domínio do tempo, a representação do sinal permite avaliar a evolução da amplitude da vibração e extrair indicadores estatísticos, como o valor eficaz (\textit{Root Mean Square} -- RMS). Quando expresso em velocidade de vibração (mm/s), esse indicador pode ser utilizado para avaliar a severidade vibratória do equipamento, conforme sua classe de aplicação, estabelecida de acordo com características construtivas e porte da máquina, conforme apresentado no Quadro~\ref{quadro:severidade}. Essa classificação permite relacionar quantitativamente o nível de vibração medido com diferentes condições de operação, auxiliando na avaliação da condição do equipamento. No domínio da frequência, por sua vez, a análise espectral possibilita identificar as componentes de frequência presentes no sinal. Para essa finalidade, emprega-se a Transformada Discreta de Fourier (DFT), cuja implementação computacional eficiente pode ser realizada por meio da Transformada Rápida de Fourier (\textit{Fast Fourier Transform} -- FFT). A representação no domínio da frequência permite, portanto, identificar componentes espectrais associadas ao comportamento dinâmico do equipamento \cite{girdhar2004practical,randall2011vibration}.
 
 \begin{table}[!t]
 \centering
@@ -126,7 +126,7 @@ A análise desses sinais pode ser realizada tanto no domínio do tempo quanto no
 
 \renewcommand{\arraystretch}{1.3}
 \small
-
+\label{quadro:severidade}
 \begin{tabular}{|C{1.05cm}|C{1.05cm}|C{1.05cm}|C{1.05cm}|C{1.05cm}|C{1.05cm}|}
 \hline
 \textbf{$x_{\text{rms}}$ (mm/s)} &
@@ -229,6 +229,36 @@ A análise desses sinais pode ser realizada tanto no domínio do tempo quanto no
 
 \end{table}
 
+No Quadro \ref{table:diagnostico_defeitos} é apresentado a correlação entre falhas comuns e suas manifestações espectrais. Para o processamento da FFT, o sinal deve ter comprimento finito, o que exige o uso de funções de janelamento. No escopo deste trabalho, utiliza-se a janela de Hamming \cite{girdhar2004practical}, cuja resposta em frequência reduz o vazamento espectral (\textit{spectral leakage}) para as bandas vizinhas. Vale ressaltar que janelas mais curtas aumentam a resolução temporal, porém sacrificam a resolução em frequência.
+\begin{table*}[!t] % O asterisco faz o quadro ocupar a largura das duas colunas
+\centering
+
+% Truque para renomear temporariamente "Table" para "Quadro" no IEEE
+\renewcommand{\tablename}{Quadro}
+\caption{Diagnóstico de defeitos mecânicos e suas assinaturas vibratórias.}
+\label{quadro:diagnostico_defeitos}
+
+% Garante que as colunas tipo X centralizem verticalmente (m)
+\renewcommand{\tabularxcolumn}[1]{m{#1}}
+
+\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|}
+\hline
+\rowcolor[HTML]{EFEFEF} 
+\textbf{Defeito Mecânico} & \textbf{Assinatura no Espectro} & \textbf{Característica no Tempo} & \textbf{Direção Predominante} \\ \hline
+Desbalanceamento & Pico alto e único em 1x RPM (frequência de rotação). & Senoide limpa e repetitiva. & Radial (Horizontal ou Vertical). \\ \hline
+Desalinhamento & Picos em 1x, 2x (muito comum) e às vezes 3x RPM. & Onda levemente "achatada" ou com dupla crista. & Axial (ao longo do eixo). \\ \hline
+Folga Mecânica & Muitas harmônicas (1x, 2x, 3x... 10x) e às vezes sub-harmônicas (0.5x). & Impactos aleatórios ou batimentos irregulares. & Radial (geralmente Vertical). \\ \hline
+Falha de Rolamento & Picos em frequências não-síncronas (ex: 7,42x RPM) e bandas laterais. & Pulsos de choque agudos e repetitivos (impactos). & Radial e Axial. \\ \hline
+Cavitação (Bombas) & Ruído de fundo elevado (piso do gráfico sobe) em altas frequências. & Ruído aleatório. & Todas as direções. \\ \hline
+\end{tabularx}
+
+\vspace{4pt}
+% Substitui o \legend do ABNTeX2
+{\footnotesize Fonte: Adaptado de \cite{randall2011vibration}.}
+
+% Retorna o nome padrão caso existam outras tabelas no artigo
+\renewcommand{\tablename}{Table} 
+\end{table*}
 Apesar de sua ampla aplicação na análise de vibrações, a transformada de Fourier apresenta uma limitação associada à resolução temporal e espectral. Para uma determinada janela de aquisição, a resolução em frequência depende da duração do sinal analisado, de modo que a utilização de janelas mais longas proporciona maior resolução espectral, mas reduz a capacidade de localizar temporalmente variações rápidas do sinal. Dessa forma, a representação espectral obtida pela DFT caracteriza o conteúdo em frequência da janela analisada, mas não fornece diretamente a localização temporal dos eventos que originaram cada componente espectral \cite{oppenheim2010discrete}. Essa característica pode limitar a análise de fenômenos transitórios ou de curta duração, especialmente quando alterações relevantes ocorrem em intervalos reduzidos.
 
 Como alternativa para a análise de sinais não estacionários, a Transformada Wavelet fornece uma representação simultaneamente relacionada à escala e à localização temporal do sinal. Essa transformação utiliza uma função denominada \textit{wavelet-mãe}, a partir da qual são obtidas funções com diferentes escalas e deslocamentos. A variação da escala permite analisar diferentes características do sinal, enquanto o deslocamento possibilita localizar essas características ao longo do tempo \cite{randall2011vibration}.
@@ -260,7 +290,7 @@ e^{j2\pi f_0t},
 
 por apresentar características adequadas à análise de sinais oscilatórios e transitórios. A utilização de diferentes escalas permite analisar características do sinal associadas a diferentes faixas de frequência, enquanto o parâmetro de deslocamento possibilita identificar sua ocorrência ao longo do tempo. Essa característica torna a análise wavelet particularmente adequada para sinais de vibração que apresentam componentes transitórias ou variações rápidas, como impactos mecânicos e eventos associados ao desenvolvimento de determinadas falhas em componentes rotativos \cite{randall2011vibration}.
 
-Outra técnica complementar empregada na análise de vibrações é a Transformada de Hilbert, particularmente útil na análise de sinais modulados e na extração da envoltória. Essa abordagem pode ser utilizada para evidenciar componentes periódicas associadas a eventos de impacto, sendo especialmente relevante na identificação de falhas incipientes em rolamentos \cite{randall2011vibration}. A Transformada de Hilbert de um sinal $x(t)$ é definida por (\ref{equation:hilbert})
+Outra técnica complementar empregada na análise de vibrações é a Transformada de Hilbert, particularmente útil na análise de sinais modulados e na extração da envoltória. Essa abordagem pode ser utilizada para evidenciar componentes periódicas associadas a eventos de impacto, sendo especialmente relevante na identificação de falhas incipientes em rolamentos \cite{randall2011vibration}. A Transformada de Hilbert de um sinal $x(t)$ é definida por (\ref{equation:hilbert}).
 
 \begin{equation}
 \tilde{x}(t) =
@@ -295,7 +325,7 @@ O presente trabalho caracteriza-se como uma pesquisa aplicada, tendo como objeti
 
 O desenvolvimento do sistema foi realizado de forma incremental, contemplando inicialmente a seleção dos componentes e o desenvolvimento do dispositivo de aquisição. Para a medição das vibrações, foi empregado o acelerômetro ADXL345, selecionado em função de sua capacidade de aquisição em alta taxa de amostragem e de sua resolução, além da relação entre custo e desempenho para a aplicação proposta.
 
-Como unidade de processamento, foi utilizado o microcontrolador XIAO ESP32-C6, da Seeed Studio, escolhido em função de sua capacidade de processamento, recursos de comunicação e baixo consumo de energia. A alimentação do dispositivo foi realizada por meio de uma bateria de íons de lítio modelo 602535, com capacidade de 600~mAh, associada a um módulo TP4056 para gerenciamento do carregamento. O módulo também permite a alimentação do sistema durante o processo de carregamento, possibilitando a operação em \textit{bypass}.
+Como unidade de processamento, foi utilizado o microcontrolador XIAO ESP32-C6, da Seeed Studio, escolhido em função de sua capacidade de processamento, recursos de comunicação e baixo consumo de energia. A alimentação do dispositivo foi realizada por meio de uma bateria de íons de lítio, modelo 602535, com capacidade de 600~mAh, associada a um módulo TP4056 para gerenciamento do carregamento. O módulo também permite a alimentação do sistema durante o processo de carregamento, possibilitando a operação em \textit{bypass}.
 
 Para a integração dos componentes, foi desenvolvida uma placa de circuito impresso destinada à conexão entre o microcontrolador, o acelerômetro e os demais elementos do sistema. A utilização da placa permitiu reduzir as dimensões do conjunto e organizar as conexões elétricas, resultando no dispositivo apresentado nas Figuras~\ref{fig:imagem_a} e~\ref{fig:imagem_b}.
 
@@ -304,70 +334,220 @@ Para a integração dos componentes, foi desenvolvida uma placa de circuito impr
     \includegraphics[width=0.5\columnwidth]{Figuras/prot_01.png}
     \caption{Vista em perspectiva isométrica do dispositivo desenvolvido.}
     \label{fig:imagem_a}
+    
     {\footnotesize Fonte: Elaborado pelo autor.}
 \end{figure}
-
 
 \begin{figure}[!t]
     \centering
     \includegraphics[width=0.5\columnwidth]{Figuras/proto_03.png}
     \caption{Vista em corte do dispositivo desenvolvido.}
     \label{fig:imagem_b}
+    
     {\footnotesize Fonte: Elaborado pelo autor.}
 \end{figure}
 
-O custo dos componentes é apresentado na Tabela \ref{tab:custos_componentes}, confirmando o baixo custo de implemetanção do sistema.
+O custo dos componentes utilizados no protótipo é apresentado na Tabela~\ref{tab:custos_componentes}, evidenciando o baixo custo de implementação do sistema.
 
-\begin{table}[H]
+\begin{table}[!t]
     \centering
     \caption{Estimativa de custos dos componentes do protótipo.}
     \label{tab:custos_componentes}
     \vspace{0.2cm}
+    
     \begin{tabular}{lc}
         \toprule
-        \textbf{Componente} & \textbf{Custo Aproximado} \\
+        \textbf{Componente} & \textbf{Custo aproximado} \\
         \midrule
-        ESP32-C3 XIAO & R\$ 50,00 \\
+        XIAO ESP32-C6 & R\$ 50,00 \\
         ADXL345 & R\$ 20,00 \\
-        Case 3D & - \\
+        Case 3D & -- \\
         TP4056 & R\$ 10,00 \\
         Bateria 602535 & R\$ 40,00 \\
-        Placa de Circuito Impresso & - \\
+        Placa de circuito impresso & -- \\
         \bottomrule
     \end{tabular}
+    
     \vspace{0.2cm}
-    \par {\footnotesize Fonte: Elaborado pelo autor.}
+    
+    {\footnotesize Fonte: Elaborado pelo autor.}
 \end{table}
 \subsection{Software}
-Para a programação do microcontrolador ESP32-C3, utilizou-se a linguagem C++ por meio da IDE \textit{PlatformIO} (extensão do \textit{Visual Studio Code}). A escolha dessa ferramenta justifica-se por oferecer um controle mais rigoroso sobre os recursos de \textit{hardware} em comparação à IDE Arduino convencional.
+Para o desenvolvimento do firmware do microcontrolador XIAO ESP32-C6, foi utilizada a linguagem C++, empregando o ambiente \textit{PlatformIO} como extensão do \textit{Visual Studio Code}. A utilização dessa ferramenta possibilitou o gerenciamento das dependências do projeto, a configuração da plataforma de desenvolvimento e a organização do código destinado à aquisição e ao processamento inicial dos sinais de vibração.
 
-A interface gráfica e o processamento de dados foram desenvolvidos na linguagem 
-\textit{Python}, utilizando o \textit{framework PySide6}. Para a manipulação das 
-estruturas de dados, empregou-se a biblioteca \textit{NumPy}, enquanto a biblioteca 
-\textit{SciPy} foi utilizada para a aplicação de métodos matemáticos discretos, 
-tais como as transformadas de Hilbert e de Fourier. A persistência de dados em 
-nuvem foi realizada por meio da biblioteca \textit{firebase-admin}, responsável pela 
-integração com o banco de dados \textit{Firebase}, o qual viabilizou o 
-armazenamento de informações de gerenciamento de equipamentos, alarmes, usuários e 
-nomes de arquivos processados.
+A interface gráfica e o processamento dos dados foram desenvolvidos em \textit{Python}, utilizando o \textit{framework PySide6} para a construção da interface. A biblioteca \textit{NumPy} foi empregada para a manipulação e o processamento dos dados numéricos, enquanto a biblioteca \textit{SciPy} foi utilizada na aplicação de métodos de processamento digital de sinais, incluindo as transformadas de Fourier e de Hilbert.
 
-No que tange aos ambientes de desenvolvimento (IDEs), utilizaram-se o \textit{PyCharm} e o \textit{VS Code}. Adicionalmente, para a concepção da interface gráfica, empregou-se o \textit{Qt Designer}, ferramenta que permite a montagem visual da interface, otimizando o desenvolvimento ao evitar a codificação manual exaustiva dos elementos gráficos do \textit{PySide6}.
+Para o armazenamento e o gerenciamento dos dados em nuvem, foi utilizada a biblioteca \textit{firebase-admin}, responsável pela integração da aplicação com o banco de dados \textit{Firebase}. Essa estrutura permitiu o armazenamento de informações relacionadas aos equipamentos monitorados, usuários, alarmes e dados adquiridos durante as medições.
+
+Para o desenvolvimento e a organização do software, foram utilizados os ambientes \textit{Visual Studio Code} e \textit{PyCharm}. Adicionalmente, o \textit{Qt Designer} foi empregado na concepção da interface gráfica, permitindo a elaboração visual dos elementos da aplicação e reduzindo a necessidade de implementação manual dos componentes da interface por meio do \textit{PySide6}.
 
 \section{Desenvolvimento do Sistema Proposto}
+
 \subsection{Arquitetura do Sistema}
-Iniciou-se a aquisição dos dados brutos de aceleração através do sensor acelerômetro \textit{ADXL345} e o tratamento desses dados pelo microcontrolador ESP32-C3. Com essa combinação, o sistema opera em três formas distintas. A configuração do modo de operação é feito através da interface supervisória estes são: \textit{modo online}, \textit{modo offline} e \textit{modo serial}. 
 
-No modo \textit{online}, ou monitoramento continuo,  o dispositivo fica conectado à internet via \textit{Wi-Fi}, e utiliza o protocolo de comunicação \textit{Web-Socket}, devido a capacidade de utilização de \textit{callback}, permitindo que fique aguardando o recebimento de dados sem necessitar de autênticação com o host.Para este modo, o operador deve configurar o endereço IP do host, as credenciais da rede Wi-Fi e selecionar a opção correspondente no supervisório antes de iniciar a coleta. A principal limitação deste modo reside no elevado consumo de corrente, aproximadamente 220 mA durante a transmissão, o que demanda o uso de uma fonte de alimentação externa, dada a capacidade limitada da bateria de 600 mAh.
+O sistema proposto foi desenvolvido para realizar a aquisição, transmissão e análise de sinais de vibração, utilizando o acelerômetro \textit{ADXL345} para a aquisição dos dados de aceleração e o microcontrolador XIAO ESP32-C3 para o processamento inicial e o gerenciamento da comunicação. A arquitetura desenvolvida permite três modos distintos de operação, configuráveis por meio da interface supervisória: \textit{online}, \textit{offline} e \textit{serial}.
 
-O modo de operação \textit{offline} visa mitigar o consumo energético do dispositivo. Nesta configuração, o sensor realiza coletas periódicas programadas e, caso um limiar de severidade seja atingido, a amostra de dados é transmitida em formato binário para a plataforma \textit{Google Drive}. A escolha dessa ferramenta fundamentou-se na facilidade de sincronização local, visto que o operador, ao utilizar o aplicativo cliente da plataforma em sua estação de trabalho, dispõe dos arquivos binários diretamente em um diretório local do computador. Dessa forma, torna-se viável acessar e processar esses arquivos posteriormente na interface gráfica, resultando em diagnósticos equivalentes ao monitoramento em tempo real, os quais são devidamente registrados no prontuário do ativo.
+No modo \textit{online}, também denominado monitoramento contínuo, o dispositivo permanece conectado à Internet por meio de uma rede \textit{Wi-Fi} e realiza a transmissão dos dados utilizando o protocolo \textit{WebSocket}. A utilização desse protocolo permite o estabelecimento de uma comunicação bidirecional entre o dispositivo e o computador, mantendo a conexão disponível para o envio e o recebimento de dados. Para a operação nesse modo, o usuário deve configurar o endereço IP do computador, as credenciais da rede \textit{Wi-Fi} e selecionar o modo correspondente na interface supervisória antes do início da aquisição. A principal limitação dessa configuração está relacionada ao consumo de energia, que pode atingir aproximadamente 220~mA durante a transmissão, tornando necessária, em aplicações prolongadas, a utilização de uma fonte de alimentação externa, em função da capacidade limitada da bateria de 600~mAh.
 
-O modo de operação \textit{serial} combina baixa latência e alimentação estável via barramento USB, eliminando o consumo da bateria. Neste modo, cada verificação de alarme é disparada manualmente pelo comando "MODO SERIAL".
+O modo \textit{offline} foi desenvolvido com o objetivo de reduzir o consumo energético do dispositivo. Nessa configuração, o sensor realiza aquisições periódicas previamente programadas e, caso seja identificado um nível de velocidade de vibração superior ao limiar estabelecido, os dados da aquisição são armazenados em formato binário e, posteriormente, disponibilizados por meio do \textit{Google Drive}. A utilização dessa plataforma permite a sincronização dos arquivos com o computador do operador, possibilitando que os dados adquiridos sejam acessados e processados pela interface gráfica. Dessa forma, o sistema permite a realização de análises semelhantes às disponíveis no monitoramento contínuo, mesmo sem a necessidade de manter o dispositivo permanentemente conectado à rede.
 
-O segundo processo compreende o monitoramento e a arquitetura de análise dos dados. Ao iniciar a aquisição, o sistema supervisório coleta as amostras e realiza a plotagem de gráficos nos domínios do tempo e da frequência. Sequencialmente, são calculados os valores RMS e de pico. Caso esses valores excedam os limites pré-estabelecidos pelo usuário, distintos dos limiares de criticidade da norma ISO 10816, o sistema verifica a ocorrência de alarmes prévios no ciclo vigente.
+O modo \textit{serial} foi desenvolvido para aplicações nas quais se deseja reduzir a latência da comunicação e utilizar uma fonte de alimentação estável por meio da interface USB. Nessa configuração, a alimentação do dispositivo é realizada diretamente pelo barramento USB, eliminando a dependência da bateria durante a operação. As verificações de alarme são iniciadas manualmente pelo operador por meio do comando ``MODO SERIAL'' disponibilizado na interface supervisória.
 
-Inexistindo alarmes anteriores, procedem-se aos algoritmos de PDS para identificar a falha associada ao excesso de energia vibratória, culminando no envio de um e-mail com o diagnóstico provável. Caso os limiares de RMS e pico não sejam atingidos, ou se um alarme já tiver sido registrado no ciclo atual, o sistema mantém apenas a atualização dos gráficos.
+Além dos modos de aquisição, o sistema possui uma arquitetura destinada ao monitoramento e à análise dos sinais adquiridos. Após o início de uma aquisição, a interface supervisória recebe as amostras e apresenta os sinais nos domínios do tempo e da frequência. A partir dos dados de aceleração obtidos, é calculada a velocidade por meio das seguintes etapas: remoção do \textit{offset}, aplicação de um filtro passa-altas de Butterworth de quarta ordem com frequência de corte de 10~Hz, integração numérica, remoção da tendência linear e, por fim, aplicação de um segundo filtro passa-altas de quarta ordem, também com frequência de corte de 10~Hz. Em seguida, a partir do sinal de velocidade, são calculados o valor eficaz (\textit{Root Mean Square} -- RMS) e o valor de pico da vibração. Esses parâmetros são comparados com os limiares de alarme definidos pelo usuário, os quais são independentes dos limites de severidade estabelecidos pela norma ISO 10816, conforme apresentado no Quadro~\ref{quadro:niveis_severidade}.
 
-Vale ressaltar que a calibração personalizada dos limiares de valor RMS e de pico é de responsabilidade do usuário administrador. Não obstante, o sistema fornece os limites estabelecidos pela norma ISO 10816, segmentados por severidade de alarme e classe de equipamento, servindo como base de referência técnica, conforme ilustrado no Quadro \ref{quadro:niveis_severidade}. Essa funcionalidade permite que o operador defina limiares específicos entre os níveis normatizados, por exemplo, caso se deseje que o alarme seja disparado apenas ao atingir a severidade D (estado crítico), é possível ajustar o limiar precisamente entre os limites definidos pela norma para essa categoria.
+Quando os valores de RMS ou de pico ultrapassam os respectivos limiares configurados, o sistema verifica a existência de alarmes previamente registrados durante o ciclo de monitoramento vigente. Na ausência de um alarme anterior, são executados os algoritmos de processamento digital de sinais (PDS) empregados para a identificação das características associadas ao aumento da energia vibratória. A partir dos resultados obtidos, é realizada a estimativa da possível condição de falha, sendo posteriormente encaminhado um e-mail contendo o diagnóstico provável.
+
+Caso os valores de RMS e de pico permaneçam abaixo dos limiares estabelecidos, ou já exista um alarme registrado no ciclo de monitoramento, o sistema mantém o monitoramento e a atualização das representações gráficas, sem executar novamente o processo de diagnóstico.
+
+A definição dos limiares personalizados de RMS e de pico é de responsabilidade do usuário administrador do sistema. Como referência para essa configuração, o sistema disponibiliza os limites de severidade estabelecidos pela norma ISO 10816, considerando os diferentes níveis de severidade e as classes de equipamentos, conforme apresentado no Quadro~\ref{quadro:niveis_severidade}. Dessa forma, o operador pode estabelecer limiares específicos dentro das faixas de severidade apresentadas pela norma. Por exemplo, caso seja desejado que o alarme seja acionado somente quando o nível de vibração atingir a condição crítica, o limiar pode ser configurado próximo ao limite correspondente a essa condição.
+
+\subsection{\textit{Software} Supervisório}
+
+Foi desenvolvido um \textit{software} supervisório destinado à visualização e à análise dos sinais de vibração em tempo real, bem como ao gerenciamento dos equipamentos monitorados. Cada equipamento possui um histórico próprio, no qual são registrados os alarmes emitidos, os diagnósticos realizados e os respectivos planos de manutenção.
+
+A tela inicial do supervisório é apresentada na Figura~\ref{fig:supervisorio}, na qual são destacadas as principais funcionalidades disponíveis:
+
+\begin{enumerate}
+    \item status da conexão \textit{Wi-Fi} do XIAO ESP32-C3;
+    \item status da conexão \textit{WebSocket} com o dispositivo;
+    \item seleção do equipamento a ser monitorado;
+    \item processamento de arquivos adquiridos durante o modo \textit{offline};
+    \item indicação do status da aquisição em tempo real;
+    \item seleção do tipo de análise;
+    \item configurações dos parâmetros de análise;
+    \item definição dos limiares de RMS e de pico para a emissão de alarmes;
+    \item início da aquisição pelo supervisório;
+    \item interrupção da aquisição pelo supervisório;
+    \item início da aquisição por comunicação serial;
+    \item visualização dos sinais em tempo real;
+    \item apresentação dos valores calculados em tempo real.
+\end{enumerate}
+
+Além da tela inicial, o \textit{software} dispõe de outras interfaces destinadas à análise e ao gerenciamento das informações obtidas durante o monitoramento. A tela de análise permite a visualização gráfica dos resultados das técnicas de processamento digital de sinais empregadas no sistema, incluindo a Transformada Rápida de Fourier, a Transformada Wavelet, a Transformada de Hilbert e a análise cepstral. O sistema também dispõe de interfaces destinadas ao gerenciamento de alarmes, apresentação dos diagnósticos, acompanhamento dos níveis de severidade e gerenciamento dos planos de manutenção dos equipamentos.
+
+\begin{figure}[!t]
+    \centering
+    \includegraphics[width=\columnwidth]{Figuras/supervisorioMain.png}
+    \caption{Tela inicial do software supervisório.}
+    \label{fig:supervisorio}
+    
+    {\footnotesize Fonte: Elaborado pelo autor.}
+\end{figure}
+
+
+\section{Ensaios com o Protótipo e Sistema Supervisório}
+
+Nesta etapa, o sistema foi submetido a ensaios experimentais com a aplicação das principais ferramentas de processamento digital de sinais abordadas neste trabalho, incluindo a FFT, a análise cepstral, a transformada de Hilbert e a transformada de wavelet. O objetivo desta etapa consiste em avaliar o comportamento do sistema desenvolvido diante de diferentes condições de operação e, posteriormente, verificar sua capacidade de identificar alterações no comportamento vibratório do equipamento.
+
+Os dados nominais do motor utilizado nos ensaios são apresentados na Figura~\ref{fig:dados_motoTeste}. A fixação do protótipo foi realizada por meio de uma fita dupla face posicionada na região central do MIT (Motor de Indução Trifásico), conforme apresentado na Figura~\ref{fig:mit_fix}. O motor foi acionado por meio de um inversor de frequência, modelo CFP, da fabricante ProVolt, configurado para operar a 30 Hz. Essa frequência foi adotada com o objetivo de evitar níveis excessivos de vibração durante os ensaios com carga desbalanceada.
+
+A metodologia experimental consistiu na análise do MIT em três condições distintas: operação sem perturbações externas, operação com desbalanceamento induzido e operação com impactos mecânicos simulados.
+
+\begin{figure}[!t]
+    \centering
+    \caption{Dados nominais do motor de teste.}
+    \label{fig:dados_motoTeste}
+    \vspace{0.2cm}
+    \includegraphics[width=0.5\columnwidth]{Figuras/motoTeste.png}
+    \vspace{0.1cm}
+    
+    {\footnotesize Fonte: Elaborado pelo autor.}
+\end{figure}
+
+\begin{figure}[!t]
+    \centering
+    \caption{Fixação do protótipo no motor.}
+    \label{fig:mit_fix}
+    \vspace{0.2cm}
+    \includegraphics[width=0.95\columnwidth]{Figuras/sensor_fix.jpg}
+    \vspace{0.1cm}
+    {\footnotesize Fonte: Elaborado pelo autor.}
+\end{figure}
+
+
+\subsection{Análise do MIT sem perturbação}
+
+Inicialmente, foi realizada a análise do MIT em uma condição de operação sem perturbações externas, com o objetivo de estabelecer uma referência para o comportamento vibratório do equipamento. Nessa etapa, foram analisados os sinais de velocidade e aceleração no domínio do tempo, conforme apresentado nas Figuras~\ref{fig:normal_velocidade_30} e~\ref{fig:normal_aceleracao_30}, respectivamente.
+
+Para a faixa de baixa frequência associada à rotação do motor, a análise da velocidade apresenta maior relevância, uma vez que essa grandeza permite avaliar diretamente os níveis globais de vibração por meio dos valores RMS e de pico.
+
+\begin{figure}[!t]
+    \centering
+    \caption{MIT sem perturbação: sinal de velocidade.}
+    \label{fig:normal_velocidade_30}
+    \vspace{0.2cm}
+    \includegraphics[width=0.95\columnwidth]{Figuras/normal_velocidade_30.png}
+    \vspace{0.1cm}
+    {\footnotesize Fonte: Elaborado pelo autor.}
+\end{figure}
+
+\begin{figure}[!t]
+    \centering
+    \caption{MIT sem perturbação: sinal de aceleração.}
+    \label{fig:normal_aceleracao_30}
+    \vspace{0.2cm}
+    \includegraphics[width=0.95\columnwidth]{Figuras/normal_aceleracao_30.png}
+    \vspace{0.1cm}
+    {\footnotesize Fonte: Elaborado pelo autor.}
+\end{figure}
+
+Na sequência, foi realizada a análise espectral do sinal de velocidade por meio da FFT. O espectro obtido apresentou diversas componentes harmônicas distribuídas aproximadamente entre 0 Hz e 180 Hz, conforme apresentado na Figura~\ref{fig:FFT_velocidade}.
+
+\begin{figure}[!t]
+    \centering
+    \caption{MIT sem perturbação: FFT do sinal de velocidade.}
+    \label{fig:FFT_velocidade}
+    \vspace{0.2cm}
+    \includegraphics[width=0.95\columnwidth]{Figuras/normal_velocidade_fft_30.png}
+    \vspace{0.1cm}
+    {\footnotesize Fonte: Elaborado pelo autor.}
+\end{figure}
+
+Adicionalmente, a FFT foi aplicada ao sinal de aceleração com o objetivo de avaliar componentes em frequências mais elevadas. Nessa análise, observou-se a presença de múltiplas componentes espectrais distribuídas ao longo da faixa de frequência analisada, conforme apresentado na Figura~\ref{fig:FFT_aceleracao}.
+
+\begin{figure}[!t]
+    \centering
+    \caption{MIT sem perturbação: FFT do sinal de aceleração.}
+    \label{fig:FFT_aceleracao}
+    \vspace{0.2cm}
+    \includegraphics[width=0.95\columnwidth]{Figuras/normal_aceleraca_fft_30.png}
+    \vspace{0.1cm}
+    {\footnotesize Fonte: Elaborado pelo autor.}
+\end{figure}
+
+Em seguida, foi realizada a análise do sinal envelopado, obtido a partir da aplicação da transformada de Hilbert ao sinal de vibração previamente filtrado. Essa abordagem permite investigar componentes de modulação associadas a eventos de impacto e, consequentemente, auxiliar na identificação de características relacionadas a falhas em elementos de rolamentos.
+
+No ensaio realizado, foi utilizado um filtro passa-altas com frequência de corte de 600 Hz. A análise espectral do sinal envelopado apresentou componentes associadas às frequências características de falhas em rolamentos, incluindo componentes relacionadas à BPFO e à BPFI, conforme apresentado na Figura~\ref{fig:FFT_hilbert}. Entretanto, essas componentes apresentaram amplitudes relativamente baixas, de modo que não foram suficientes para o acionamento do diagnóstico automático pelo software.
+
+\begin{figure}[!t]
+    \centering
+    \caption{MIT sem perturbação: FFT do sinal envelopado.}
+    \label{fig:FFT_hilbert}
+    \vspace{0.2cm}
+    \includegraphics[width=0.95\columnwidth]{Figuras/normal_hilbert_fft_30.png}
+    \vspace{0.1cm}
+    {\footnotesize Fonte: Elaborado pelo autor.}
+\end{figure}
+
+Por fim, foi aplicada a transformada de wavelet ao sinal de aceleração, com o objetivo de avaliar a distribuição das componentes do sinal no domínio tempo-frequência. Essa abordagem permite observar simultaneamente a ocorrência de determinadas componentes espectrais e sua localização temporal, sendo particularmente útil na identificação de eventos transitórios e impactos mecânicos.
+
+Na condição de operação sem perturbações, a análise por wavelet apresentou o comportamento do sinal ao longo do intervalo de aquisição, permitindo estabelecer uma referência para comparação com os ensaios realizados posteriormente. O resultado obtido é apresentado na Figura~\ref{fig:normal_wavelet}.
+
+\begin{figure}[!t]
+    \centering
+    \caption{MIT sem perturbação: transformada de wavelet.}
+    \label{fig:normal_wavelet}
+    \vspace{0.2cm}
+    \includegraphics[width=0.95\columnwidth]{Figuras/normal_wavelet_aceleracao_30.png}
+    \vspace{0.1cm}
+    {\footnotesize Fonte: Elaborado pelo autor.}
+\end{figure}
+
+
+
+
+
+
 
 
 % Utiliza o estilo padrão exigido pela IEEE (numérico em ordem de citação)

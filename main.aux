@@ -25,24 +25,48 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Procedimento geral para monitoramento de condição e diagnóstico de máquinas, adaptado de \cite  {iso17359_2018}.}}{2}{}\protected@file@percent }
 \newlabel{fig:fluxograma_manutencao}{{1}{2}{}{figure.1}{}}
 \citation{santos2023analise}
+\citation{girdhar2004practical}
+\citation{randall2011vibration}
 \citation{oppenheim2010discrete}
 \citation{randall2011vibration}
 \citation{randall2011vibration}
 \citation{randall2011vibration}
 \@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces Quadro de Severidade de Velocidade de Vibração}}{3}{}\protected@file@percent }
 \newlabel{quadro:niveis_severidade}{{I}{3}{}{table.1}{}}
+\newlabel{quadro:severidade}{{I}{3}{}{table.1}{}}
 \newlabel{equation:wavelet}{{4}{3}{}{equation.4}{}}
 \newlabel{equation:morlet}{{5}{3}{}{equation.5}{}}
 \newlabel{equation:hilbert}{{6}{3}{}{equation.6}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Diagnóstico de defeitos mecânicos e suas assinaturas vibratórias.}}{4}{}\protected@file@percent }
+\newlabel{quadro:diagnostico_defeitos}{{II}{4}{}{table.2}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {III}Metodologia do Sistema}{4}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}Hardware}{4}{}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Estimativa de custos dos componentes do protótipo.}}{4}{}\protected@file@percent }
-\newlabel{tab:custos_componentes}{{II}{4}{}{table.2}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Vista em perspectiva isométrica do dispositivo desenvolvido.}}{4}{}\protected@file@percent }
 \newlabel{fig:imagem_a}{{2}{4}{}{figure.2}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Vista em corte do dispositivo desenvolvido.}}{4}{}\protected@file@percent }
 \newlabel{fig:imagem_b}{{3}{4}{}{figure.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}Software}{4}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Estimativa de custos dos componentes do protótipo.}}{5}{}\protected@file@percent }
+\newlabel{tab:custos_componentes}{{III}{5}{}{table.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}Software}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Desenvolvimento do Sistema Proposto}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-A}}Arquitetura do Sistema}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-B}}\textit  {Software} Supervisório}{6}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Tela inicial do software supervisório.}}{6}{}\protected@file@percent }
+\newlabel{fig:supervisorio}{{4}{6}{}{figure.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {V}Ensaios com o Protótipo e Sistema Supervisório}{6}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-A}}Análise do MIT sem perturbação}{6}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Dados nominais do motor de teste.}}{7}{}\protected@file@percent }
+\newlabel{fig:dados_motoTeste}{{5}{7}{}{figure.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Fixação do protótipo no motor.}}{7}{}\protected@file@percent }
+\newlabel{fig:mit_fix}{{6}{7}{}{figure.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces MIT sem perturbação: sinal de velocidade.}}{7}{}\protected@file@percent }
+\newlabel{fig:normal_velocidade_30}{{7}{7}{}{figure.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces MIT sem perturbação: sinal de aceleração.}}{7}{}\protected@file@percent }
+\newlabel{fig:normal_aceleracao_30}{{8}{7}{}{figure.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces MIT sem perturbação: FFT do sinal de velocidade.}}{7}{}\protected@file@percent }
+\newlabel{fig:FFT_velocidade}{{9}{7}{}{figure.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces MIT sem perturbação: FFT do sinal de aceleração.}}{7}{}\protected@file@percent }
+\newlabel{fig:FFT_aceleracao}{{10}{7}{}{figure.10}{}}
 \bibstyle{IEEEtran}
 \bibdata{references}
 \bibcite{girdhar2004practical}{1}
@@ -51,7 +75,9 @@
 \bibcite{iso17359_2018}{4}
 \bibcite{santos2023analise}{5}
 \bibcite{oppenheim2010discrete}{6}
-\@writefile{toc}{\contentsline {section}{\numberline {IV}Desenvolvimento do Sistema Proposto}{5}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-A}}Arquitetura do Sistema}{5}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{References}{5}{}\protected@file@percent }
-\gdef \@abspage@last{5}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces MIT sem perturbação: FFT do sinal envelopado.}}{8}{}\protected@file@percent }
+\newlabel{fig:FFT_hilbert}{{11}{8}{}{figure.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces MIT sem perturbação: transformada de wavelet.}}{8}{}\protected@file@percent }
+\newlabel{fig:normal_wavelet}{{12}{8}{}{figure.12}{}}
+\@writefile{toc}{\contentsline {section}{References}{8}{}\protected@file@percent }
+\gdef \@abspage@last{8}
