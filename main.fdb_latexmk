@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex main"] 1786814314.15159 "main.aux" "main.bbl" "main" 1786814633.31566 0
+["bibtex main"] 1787701045.00288 "main.aux" "main.bbl" "main" 1787701051.4345 0
   "./IEEEtran.bst" 1785675510 61632 bc5380b3434a66b895bbc75d3d380540 ""
-  "./references.bib" 1785675510 9990 eee963325453b1d9530fe1e8fdc54a61 ""
-  "main.aux" 1786814632 6391 9923d6673745ce04a8042522009c942f "pdflatex"
+  "./references.bib" 1787699466 10459 4e540ec837bb1e8d9b4ea3e8ec7d4ff5 ""
+  "main.aux" 1787701049 9063 01dc1a6fea1db4677adb5d90895bd77c "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1786814630.68884 "c:/Users/gabri/Code/Analise-vibracao-paper/main.tex" "main.pdf" "main" 1786814633.31657 0
+["pdflatex"] 1787701045.70439 "c:/Code/Analise-vibracao-paper/main.tex" "main.pdf" "main" 1787701051.43651 0
   "C:/Users/gabri/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1786278533 82507 a9eef8696c92627b87e9975edea03b2a ""
   "C:/Users/gabri/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1774814192 13333487 87f4c4f130f5bc7e7e1dab44a37505fc ""
   "C:/Users/gabri/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc" 1458473887 4993 80dc9bab7f31fb78a000ccfed0e27cab ""
@@ -96,7 +96,18 @@
   "C:/Users/gabri/AppData/Local/Programs/MiKTeX/tex/latex/tools/array.sty" 1761901070 15651 9d7c62df82cb29a555c00550babfe364 ""
   "C:/Users/gabri/AppData/Local/Programs/MiKTeX/tex/latex/tools/tabularx.sty" 1761901070 7243 a2c17f18e2c9b702b84fad03d5f9c78b ""
   "C:/Users/gabri/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1729265222 55384 b454dec21c2d9f45ec0b793f0995b992 ""
-  "Figuras/diagrama.pdf" 1782565932 26641 62e773eb4fbf8daa020239d09b439246 ""
+  "Figuras/alarmes_impacto.png" 1781573536 23246 2fcc9fa7a3f8ebd24f92d1a0fbca5ed0 ""
+  "Figuras/desba_chave.jpg" 1781570534 112408 3846964c7a22faf53eaa2bf18eb8a5e7 ""
+  "Figuras/desbalanceamento_desb_fft_30.png" 1781557906 36564 e9fe5bc99bf994b7b6941d77cecc1d8b ""
+  "Figuras/desbalanceamento_desb_vel_30.png" 1781558022 46912 695769209cbda402e5a10ee301f04ed1 ""
+  "Figuras/desbalanceamento_hilbertFFT_30.png" 1781558238 38651 60f707e81b483c084028539b459ba133 ""
+  "Figuras/desbalanceamento_wavelet_30.png" 1781558381 156953 94a7f344c0d09b5ea9ce9114ecfeba53 ""
+  "Figuras/desbalanceamentoalarmes.png" 1781572292 24863 b028fa0f7a940dadb65b3e7e63a3be90 ""
+  "Figuras/diagrama.pdf" 1787700943 26642 1e9596e4e9993280b4ee9e2b1464106b ""
+  "Figuras/fft_acel_30_desbalanceamento.png" 1781558132 29237 111a64902bc906fe75753674f65e15d7 ""
+  "Figuras/impacto_acel_wavelet.png" 1781573409 168762 5badd2dab5b6972fab2669cd086a287f ""
+  "Figuras/impacto_vel.png" 1781559163 53147 2e145d00f60177768d9c8e069a8fb9f5 ""
+  "Figuras/impacto_vel_fft.png" 1781559231 45523 01fdc29ea93bc5f4be5245c534f95fd8 ""
   "Figuras/motoTeste.png" 1781740422 11447 1a534c26126646121ff28a1a80bb98ef ""
   "Figuras/normal_aceleraca_fft_30.png" 1781558670 39854 58c826ae28df3e8d71515567474a2b56 ""
   "Figuras/normal_aceleracao_30.png" 1781558629 53612 63136865b7220923ee3d1e5128d62e82 ""
@@ -109,10 +120,10 @@
   "Figuras/sensor_fix.jpg" 1781570171 109958 6209907f383f3df123a70a7de3a1f886 ""
   "Figuras/supervisorioMain.png" 1776528215 164821 302c98a5fc6627dc67060a3015c9dc85 ""
   "IEEEtran.cls" 1785675510 288304 5b2e4fa15b0f7eabb840ebf67df4c0f7 ""
-  "c:/Users/gabri/Code/Analise-vibracao-paper/main.tex" 1786814630 39674 6e0bdee575eabda7c14396c44b330b3e ""
-  "main.aux" 1786814632 6391 9923d6673745ce04a8042522009c942f "pdflatex"
-  "main.bbl" 1786814314 2327 05051d4b9adff282a85bec6ac11b6ba6 "bibtex main"
-  "main.tex" 1786814630 39674 6e0bdee575eabda7c14396c44b330b3e ""
+  "c:/Code/Analise-vibracao-paper/main.tex" 1787701037 48593 e7f0a46a1ec431f22ea7b346cefa592a ""
+  "main.aux" 1787701049 9063 01dc1a6fea1db4677adb5d90895bd77c "pdflatex"
+  "main.bbl" 1787701045 2935 9b7964ff7f7a86db98f16fb74077ad6a "bibtex main"
+  "main.tex" 1787701037 48593 e7f0a46a1ec431f22ea7b346cefa592a ""
   (generated)
   "main.aux"
   "main.log"

@@ -1,0 +1,91 @@
+\subsection{**Análise do MIT com perturbação: desbalanceamento**}
+
+Após a conclusão das análises do motor em condições normais de operação, foi introduzida uma perturbação mecânica no eixo do motor, com o objetivo de provocar uma condição de desbalanceamento. A partir dessa condição, foram repetidas as análises realizadas anteriormente, permitindo comparar o comportamento vibratório do equipamento antes e após a introdução da perturbação.
+
+Para induzir o desbalanceamento, uma chave Allen foi fixada ao eixo do motor por meio de uma abraçadeira plástica, conforme apresentado na Figura~\ref{fig:perturbacaoDesbalanceamento}.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.5\columnwidth]{Figuras/desba_chave.jpg}
+    \caption{Perturbação induzida no MIT por meio de carga desbalanceadora.}
+    \label{fig:perturbacaoDesbalanceamento}
+    {\footnotesize Fonte: Elaborado pelo autor.}
+\end{figure}
+
+Após o acionamento do motor novamente a 30 Hz, foi obtido o sinal de velocidade apresentado na Figura~\ref{fig:desbalanceamentoVel}. Observa-se uma alteração significativa no comportamento do sinal, especialmente no eixo $Y$, que apresenta uma característica aproximadamente senoidal. Esse comportamento indica a predominância de uma componente periódica em relação às demais componentes presentes no sinal, diferindo do comportamento observado para o motor sem a carga desbalanceadora, apresentado na Figura~\ref{fig:normal_velocidade_30}.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.95\columnwidth]{Figuras/desbalanceamento_desb_vel_30.png}
+    \caption{Desbalanceamento: velocidade no domínio do tempo.}
+    \label{fig:desbalanceamentoVel}
+    {\footnotesize Fonte: Elaborado pelo autor.}
+\end{figure}
+
+A aplicação da FFT ao sinal de velocidade permitiu verificar essa
+característica no domínio da frequência. Conforme apresentado na
+Figura~\ref{fig:desbalanceamentoFFT_vel}, observa-se uma componente
+predominante próxima a 15 Hz no eixo $Y$. Considerando que o motor
+apresenta velocidade nominal de 1800 rpm a 60 Hz, a operação do
+inversor a 30 Hz corresponde, para as condições do ensaio, a uma
+velocidade de aproximadamente 900 rpm, equivalente a uma frequência
+de rotação de 15 Hz.
+
+A presença de uma componente predominante em aproximadamente
+$1\times f_{\mathrm{rot}}$, coincidente com a frequência de rotação do
+eixo, é característica do comportamento vibratório associado ao
+desbalanceamento. Isso ocorre porque a massa desbalanceadora produz
+uma força centrífuga periódica cuja frequência de repetição é igual à
+frequência de rotação do eixo. Dessa forma, o pico observado em
+aproximadamente 15 Hz constitui uma evidência experimental da
+condição de desbalanceamento introduzida no motor.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.95\columnwidth]{Figuras/desbalanceamento_desb_fft_30.png}
+    \caption{Desbalanceamento: FFT da velocidade.}
+    \label{fig:desbalanceamentoFFT_vel}
+    {\footnotesize Fonte: Elaborado pelo autor.}
+\end{figure}
+
+Na análise da FFT do sinal de aceleração, apresentada na Figura~\ref{fig:desbalanceamentofft_acel}, observa-se a permanência das componentes harmônicas identificadas anteriormente na condição sem perturbação, apresentada na Figura~\ref{fig:FFT_aceleracao}. Entretanto, a presença de uma componente de elevada amplitude próxima a 15 Hz no eixo $Y$ faz com que as demais componentes apresentem menor contribuição relativa no espectro.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.95\columnwidth]{Figuras/desbalanceamento_desb_fft_30.png}
+    \caption{Desbalanceamento: FFT da aceleração.}
+    \label{fig:desbalanceamentofft_acel}
+    {\footnotesize Fonte: Elaborado pelo autor.}
+\end{figure}
+
+A partir dessas análises, observa-se que a perturbação provocada pelo desbalanceamento está predominantemente associada às componentes de menor frequência, apresentando menor influência relativa nas componentes de frequência mais elevada. Para verificar essa característica, foi aplicada a análise do sinal envelopado por meio da transformada de Hilbert, conforme apresentado na Figura~\ref{fig:desbalanceamentohilbert}. Em comparação com o resultado obtido para a condição sem perturbação, apresentado na Figura~\ref{fig:FFT_hilbert}, observa-se comportamento espectral semelhante, indicando que a perturbação introduzida não provocou alterações significativas nas componentes de alta frequência analisadas pelo método.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.95\columnwidth]{Figuras/desbalanceamento_hilbertFFT_30.png}
+    \caption{Desbalanceamento: FFT do sinal envelopado.}
+    \label{fig:desbalanceamentohilbert}
+    {\footnotesize Fonte: Elaborado pelo autor.}
+\end{figure}
+
+Por fim, foi aplicada a transformada de wavelet ao sinal de aceleração, conforme apresentado na Figura~\ref{fig:waveletDesba}. Observa-se uma maior concentração de componentes na representação tempo-frequência, evidenciada pela presença de regiões de maior intensidade associadas à periodicidade da vibração. Esse comportamento permite visualizar a ocorrência da perturbação ao longo do intervalo de aquisição e complementa a análise realizada no domínio da frequência.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.95\columnwidth]{Figuras/desbalanceamento_wavelet_30.png}
+    \caption{Desbalanceamento: transformada de wavelet.}
+    \label{fig:waveletDesba}
+    {\footnotesize Fonte: Elaborado pelo autor.}
+\end{figure}
+
+Como consequência do aumento do nível de vibração provocado pelo desbalanceamento, o sistema supervisório identificou a condição de alarme previamente configurada. O resultado apresentado pelo sistema é mostrado na Figura~\ref{fig:alarmeDesba}, demonstrando a capacidade do protótipo de detectar a alteração no comportamento vibratório e gerar o respectivo alarme.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.95\columnwidth]{Figuras/desbalanceamentoalarmes.png}
+    \caption{Alarme emitido para a condição de desbalanceamento.}
+    \label{fig:alarmeDesba}
+    {\footnotesize Fonte: Elaborado pelo autor.}
+\end{figure}
+
+\FloatBarrier

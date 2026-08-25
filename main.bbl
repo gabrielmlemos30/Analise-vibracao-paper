@@ -37,6 +37,14 @@ R.~B. Randall, \emph{Vibration-based Condition Monitoring: Industrial,
   0.4em\relax Chichester, West Sussex, United Kingdom: John Wiley \& Sons,
   2011.
 
+\bibitem{ElHammoumi2025}
+\BIBentryALTinterwordspacing
+Z.~El~Hammoumi, D.~Tebr, Y.~Charkaoui, I.~Satauri, and O.~El~Beqqali,
+  ``Predictive maintenance approaches: A systematic literature review,''
+  \emph{Engineering Proceedings}, vol. 112, no.~1, p.~70, 2025. [Online].
+  Available: \url{https://www.mdpi.com/2673-4591/112/1/70}
+\BIBentrySTDinterwordspacing
+
 \bibitem{iso17359_2018}
 {ISO 17359}, ``Condition monitoring and diagnostics of machines — general
   guidelines,'' International Organization for Standardization, Standard, 2018.
@@ -47,6 +55,11 @@ J.~C. dos Santos, J.~S. Alves, L.~I. da~Rocha, and P.~H.~C. Bernardo,
   norma {ISO} 10816,'' \emph{Trabalho de Conclus{\~a}o de Curso
   (Gradua{\c{c}}{\~a}o em Engenharia El{\'e}trica)}, 2023, orientador: Marcelo
   Gomes De Paoli.
+
+\bibitem{iso10816}
+\emph{ISO 10816-1: Mechanical vibration -- Evaluation of machine vibration by
+  measurements on non-rotating parts -- Part 1: General guidelines},
+  International Organization for Standardization, Geneva, CH, 1995.
 
 \bibitem{oppenheim2010discrete}
 A.~V. Oppenheim and R.~W. Schafer, \emph{Discrete-Time Signal Processing},

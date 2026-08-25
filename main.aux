@@ -5,7 +5,7 @@
 \citation{girdhar2004practical,randall2011vibration}
 \citation{randall2011vibration}
 \citation{girdhar2004practical,randall2011vibration}
-\citation{randall2011vibration}
+\citation{randall2011vibration,ElHammoumi2025}
 \@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {I-A}}Maintaining the Integrity of the Specifications}{1}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {II}Fundamentação Teórica}{1}{}\protected@file@percent }
@@ -25,15 +25,16 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Procedimento geral para monitoramento de condição e diagnóstico de máquinas, adaptado de \cite  {iso17359_2018}.}}{2}{}\protected@file@percent }
 \newlabel{fig:fluxograma_manutencao}{{1}{2}{}{figure.1}{}}
 \citation{santos2023analise}
+\citation{iso10816}
 \citation{girdhar2004practical}
 \citation{randall2011vibration}
 \citation{oppenheim2010discrete}
 \citation{randall2011vibration}
 \citation{randall2011vibration}
 \citation{randall2011vibration}
+\newlabel{quadro:severidade}{{\mbox  {II-D}}{3}{}{equation.3}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces Quadro de Severidade de Velocidade de Vibração}}{3}{}\protected@file@percent }
 \newlabel{quadro:niveis_severidade}{{I}{3}{}{table.1}{}}
-\newlabel{quadro:severidade}{{I}{3}{}{table.1}{}}
 \newlabel{equation:wavelet}{{4}{3}{}{equation.4}{}}
 \newlabel{equation:morlet}{{5}{3}{}{equation.5}{}}
 \newlabel{equation:hilbert}{{6}{3}{}{equation.6}{}}
@@ -43,10 +44,10 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}Hardware}{4}{}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Vista em perspectiva isométrica do dispositivo desenvolvido.}}{4}{}\protected@file@percent }
 \newlabel{fig:imagem_a}{{2}{4}{}{figure.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Vista em corte do dispositivo desenvolvido.}}{4}{}\protected@file@percent }
-\newlabel{fig:imagem_b}{{3}{4}{}{figure.3}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Estimativa de custos dos componentes do protótipo.}}{5}{}\protected@file@percent }
-\newlabel{tab:custos_componentes}{{III}{5}{}{table.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Estimativa de custos dos componentes do protótipo.}}{4}{}\protected@file@percent }
+\newlabel{tab:custos_componentes}{{III}{4}{}{table.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Vista em corte do dispositivo desenvolvido.}}{5}{}\protected@file@percent }
+\newlabel{fig:imagem_b}{{3}{5}{}{figure.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}Software}{5}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {IV}Desenvolvimento do Sistema Proposto}{5}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-A}}Arquitetura do Sistema}{5}{}\protected@file@percent }
@@ -67,17 +68,43 @@
 \newlabel{fig:FFT_velocidade}{{9}{7}{}{figure.9}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces MIT sem perturbação: FFT do sinal de aceleração.}}{7}{}\protected@file@percent }
 \newlabel{fig:FFT_aceleracao}{{10}{7}{}{figure.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces MIT sem perturbação: FFT do sinal envelopado.}}{8}{}\protected@file@percent }
+\newlabel{fig:FFT_hilbert}{{11}{8}{}{figure.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces MIT sem perturbação: transformada de wavelet.}}{8}{}\protected@file@percent }
+\newlabel{fig:normal_wavelet}{{12}{8}{}{figure.12}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-B}}Análise do MIT com perturbação: desbalanceamento}{8}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Perturbação induzida no MIT por meio de carga desbalanceadora.}}{8}{}\protected@file@percent }
+\newlabel{fig:perturbacaoDesbalanceamento}{{13}{8}{}{figure.13}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Desbalanceamento: velocidade no domínio do tempo.}}{8}{}\protected@file@percent }
+\newlabel{fig:desbalanceamentoVel}{{14}{8}{}{figure.14}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces Desbalanceamento: FFT da velocidade.}}{9}{}\protected@file@percent }
+\newlabel{fig:desbalanceamentoFFT_vel}{{15}{9}{}{figure.15}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces Desbalanceamento: FFT da aceleração.}}{9}{}\protected@file@percent }
+\newlabel{fig:desbalanceamentofft_acel}{{16}{9}{}{figure.16}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces Desbalanceamento: FFT do sinal envelopado.}}{9}{}\protected@file@percent }
+\newlabel{fig:desbalanceamentohilbert}{{17}{9}{}{figure.17}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces Desbalanceamento: transformada de wavelet.}}{9}{}\protected@file@percent }
+\newlabel{fig:waveletDesba}{{18}{9}{}{figure.18}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-C}}Análise do MIT com perturbação: impacto}{9}{}\protected@file@percent }
 \bibstyle{IEEEtran}
 \bibdata{references}
 \bibcite{girdhar2004practical}{1}
 \bibcite{deac2010modern}{2}
 \bibcite{randall2011vibration}{3}
-\bibcite{iso17359_2018}{4}
-\bibcite{santos2023analise}{5}
-\bibcite{oppenheim2010discrete}{6}
-\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces MIT sem perturbação: FFT do sinal envelopado.}}{8}{}\protected@file@percent }
-\newlabel{fig:FFT_hilbert}{{11}{8}{}{figure.11}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces MIT sem perturbação: transformada de wavelet.}}{8}{}\protected@file@percent }
-\newlabel{fig:normal_wavelet}{{12}{8}{}{figure.12}{}}
-\@writefile{toc}{\contentsline {section}{References}{8}{}\protected@file@percent }
-\gdef \@abspage@last{8}
+\bibcite{ElHammoumi2025}{4}
+\bibcite{iso17359_2018}{5}
+\bibcite{santos2023analise}{6}
+\bibcite{iso10816}{7}
+\@writefile{lof}{\contentsline {figure}{\numberline {19}{\ignorespaces Alarme emitido para a condição de desbalanceamento.}}{10}{}\protected@file@percent }
+\newlabel{fig:alarmeDesba}{{19}{10}{}{figure.19}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {20}{\ignorespaces MIT com impacto: sinal de velocidade.}}{10}{}\protected@file@percent }
+\newlabel{fig:impactoVel}{{20}{10}{}{figure.20}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {21}{\ignorespaces MIT com impacto: FFT do sinal de velocidade.}}{10}{}\protected@file@percent }
+\newlabel{fig:FFTimpactoVel}{{21}{10}{}{figure.21}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {22}{\ignorespaces MIT com impacto: transformada de wavelet.}}{10}{}\protected@file@percent }
+\newlabel{fig:waveletImpacto}{{22}{10}{}{figure.22}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {23}{\ignorespaces Alarme de severidade D associado ao impacto.}}{10}{}\protected@file@percent }
+\newlabel{fig:alarmImpacto}{{23}{10}{}{figure.23}{}}
+\@writefile{toc}{\contentsline {section}{References}{10}{}\protected@file@percent }
+\bibcite{oppenheim2010discrete}{8}
+\gdef \@abspage@last{11}

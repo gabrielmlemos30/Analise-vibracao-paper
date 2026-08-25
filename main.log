@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.29)  15 AUG 2026 14:23
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.29)  25 AUG 2026 20:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**c:/Users/gabri/Code/Analise-vibracao-paper/main.tex
-(c:/Users/gabri/Code/Analise-vibracao-paper/main.tex
+**c:/Code/Analise-vibracao-paper/main.tex
+(c:/Code/Analise-vibracao-paper/main.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
 (IEEEtran.cls
@@ -383,11 +383,11 @@ bri/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}
 
 pdfTeX warning: pdflatex (file ./Figuras/diagrama.pdf): PDF inclusion: found PD
 F version <1.7>, but at most version <1.5> allowed
-<Figuras/diagrama.pdf, id=9, 459.31601pt x 915.11888pt>
+<Figuras/diagrama.pdf, id=9, 317.98799pt x 893.43785pt>
 File: Figuras/diagrama.pdf Graphic file (type pdf)
 <use Figuras/diagrama.pdf>
 Package pdftex.def Info: Figuras/diagrama.pdf  used on input line 90.
-(pdftex.def)             Requested size: 252.0pt x 502.07417pt.
+(pdftex.def)             Requested size: 201.60077pt x 566.42697pt.
 
 Underfull \hbox (badness 1852) in paragraph at lines 95--96
 []\OT1/ptm/m/n/10 Entre as difer-entes grandezas uti-lizadas no mon-i-tora-
@@ -404,39 +404,42 @@ Underfull \hbox (badness 1603) in paragraph at lines 101--102
  []
 
 
-Underfull \vbox (badness 3690) has occurred while \output is active []
+Underfull \vbox (badness 2111) has occurred while \output is active []
 
  [2 <./Figuras/diagrama.pdf>]
-Overfull \hbox (4.47707pt too wide) in paragraph at lines 162--162
+Overfull \hbox (4.47707pt too wide) in paragraph at lines 160--160
  []|\OT1/ptm/m/n/9 Aceit[]avel| 
  []
 
 
-Overfull \hbox (4.47707pt too wide) in paragraph at lines 170--170
+Overfull \hbox (4.47707pt too wide) in paragraph at lines 168--168
  []|\OT1/ptm/m/n/9 Aceit[]avel| 
  []
 
 
-Overfull \hbox (4.47707pt too wide) in paragraph at lines 178--178
+Overfull \hbox (4.47707pt too wide) in paragraph at lines 176--176
  []|\OT1/ptm/m/n/9 Aceit[]avel| 
  []
 
 
-Overfull \hbox (4.47707pt too wide) in paragraph at lines 186--187
+Overfull \hbox (4.47707pt too wide) in paragraph at lines 184--185
  []|\OT1/ptm/m/n/9 Aceit[]avel| 
  []
 
 
-Overfull \hbox (2.0528pt too wide) in paragraph at lines 130--225
+Overfull \hbox (2.0528pt too wide) in paragraph at lines 128--223
  [][] 
  []
 
 
 LaTeX Warning: Reference `table:diagnostico_defeitos' on page 3 undefined on in
-put line 232.
+put line 233.
 
 
-Underfull \hbox (badness 1533) in paragraph at lines 293--294
+Underfull \vbox (badness 2213) has occurred while \output is active []
+
+
+Underfull \hbox (badness 1533) in paragraph at lines 296--297
 []\OT1/ptm/m/n/10 Outra t[]ecnica com-ple-men-tar em-pre-gada na an[]alise de
  []
 
@@ -444,69 +447,69 @@ Underfull \hbox (badness 1533) in paragraph at lines 293--294
 <Figuras/prot_01.png, id=63, 243.15843pt x 285.31593pt>
 File: Figuras/prot_01.png Graphic file (type png)
 <use Figuras/prot_01.png>
-Package pdftex.def Info: Figuras/prot_01.png  used on input line 334.
+Package pdftex.def Info: Figuras/prot_01.png  used on input line 337.
 (pdftex.def)             Requested size: 126.0pt x 147.8427pt.
 <Figuras/proto_03.png, id=64, 243.15843pt x 285.31593pt>
 File: Figuras/proto_03.png Graphic file (type png)
 <use Figuras/proto_03.png>
-Package pdftex.def Info: Figuras/proto_03.png  used on input line 343.
+Package pdftex.def Info: Figuras/proto_03.png  used on input line 346.
 (pdftex.def)             Requested size: 126.0pt x 147.8427pt.
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 3
-62.
+66.
  (C:\Users\gabri\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-[4 <./Figuras/prot_01.png> <./Figuras/proto_03.png>]
-Underfull \hbox (badness 2285) in paragraph at lines 388--389
+[4 <./Figuras/prot_01.png>]
+Underfull \hbox (badness 2285) in paragraph at lines 393--394
 []\OT1/ptm/m/n/10 O sis-tema pro-posto foi de-sen-volvido para re-alizar a
  []
 
 
-Underfull \hbox (badness 1681) in paragraph at lines 390--391
+Underfull \hbox (badness 1681) in paragraph at lines 395--396
 []\OT1/ptm/m/n/10 No modo \OT1/ptm/m/it/10 on-line\OT1/ptm/m/n/10 , tamb[]em de
 -nom-i-nado mon-i-tora-mento
  []
 
-[5]
+[5 <./Figuras/proto_03.png>]
 <Figuras/supervisorioMain.png, id=74, 1012.5328pt x 536.75531pt>
 File: Figuras/supervisorioMain.png Graphic file (type png)
 <use Figuras/supervisorioMain.png>
-Package pdftex.def Info: Figuras/supervisorioMain.png  used on input line 430.
+Package pdftex.def Info: Figuras/supervisorioMain.png  used on input line 435.
 (pdftex.def)             Requested size: 252.0pt x 133.58241pt.
 <Figuras/motoTeste.png, id=75, 262.73157pt x 338.76563pt>
 File: Figuras/motoTeste.png Graphic file (type png)
 <use Figuras/motoTeste.png>
-Package pdftex.def Info: Figuras/motoTeste.png  used on input line 451.
+Package pdftex.def Info: Figuras/motoTeste.png  used on input line 456.
 (pdftex.def)             Requested size: 126.0pt x 162.46608pt.
 <Figuras/sensor_fix.jpg, id=76, 1606.0pt x 1204.5pt>
 File: Figuras/sensor_fix.jpg Graphic file (type jpg)
 <use Figuras/sensor_fix.jpg>
-Package pdftex.def Info: Figuras/sensor_fix.jpg  used on input line 462.
+Package pdftex.def Info: Figuras/sensor_fix.jpg  used on input line 467.
 (pdftex.def)             Requested size: 239.39923pt x 179.54607pt.
 <Figuras/normal_velocidade_30.png, id=77, 800.9925pt x 447.92343pt>
 File: Figuras/normal_velocidade_30.png Graphic file (type png)
 <use Figuras/normal_velocidade_30.png>
 Package pdftex.def Info: Figuras/normal_velocidade_30.png  used on input line 4
-79.
+84.
 (pdftex.def)             Requested size: 239.39923pt x 133.87228pt.
 <Figuras/normal_aceleracao_30.png, id=78, 807.015pt x 442.65375pt>
 File: Figuras/normal_aceleracao_30.png Graphic file (type png)
 <use Figuras/normal_aceleracao_30.png>
 Package pdftex.def Info: Figuras/normal_aceleracao_30.png  used on input line 4
-89.
+94.
 (pdftex.def)             Requested size: 239.39923pt x 131.31119pt.
-<Figuras/normal_velocidade_fft_30.png, id=79, 801.74532pt x 436.63126pt>
+ [6 <./Figuras/supervisorioMain.png>]
+<Figuras/normal_velocidade_fft_30.png, id=83, 801.74532pt x 436.63126pt>
 File: Figuras/normal_velocidade_fft_30.png Graphic file (type png)
 <use Figuras/normal_velocidade_fft_30.png>
 Package pdftex.def Info: Figuras/normal_velocidade_fft_30.png  used on input li
-ne 501.
+ne 506.
 (pdftex.def)             Requested size: 239.39923pt x 130.37744pt.
- [6 <./Figuras/supervisorioMain.png>]
 <Figuras/normal_aceleraca_fft_30.png, id=84, 804.00375pt x 449.42906pt>
 File: Figuras/normal_aceleraca_fft_30.png Graphic file (type png)
 <use Figuras/normal_aceleraca_fft_30.png>
 Package pdftex.def Info: Figuras/normal_aceleraca_fft_30.png  used on input lin
-e 513.
+e 518.
 (pdftex.def)             Requested size: 239.39923pt x 133.82166pt.
  [7 <./Figuras/motoTeste.png> <./Figuras/sensor_fix.jpg> <./Figuras/normal_velo
 cidade_30.png> <./Figuras/normal_aceleracao_30.png> <./Figuras/normal_velocidad
@@ -515,21 +518,112 @@ e_fft_30.png> <./Figuras/normal_aceleraca_fft_30.png>]
 File: Figuras/normal_hilbert_fft_30.png Graphic file (type png)
 <use Figuras/normal_hilbert_fft_30.png>
 Package pdftex.def Info: Figuras/normal_hilbert_fft_30.png  used on input line 
-527.
+532.
 (pdftex.def)             Requested size: 239.39923pt x 130.55623pt.
 <Figuras/normal_wavelet_aceleracao_30.png, id=95, 807.015pt x 439.6425pt>
 File: Figuras/normal_wavelet_aceleracao_30.png Graphic file (type png)
 <use Figuras/normal_wavelet_aceleracao_30.png>
 Package pdftex.def Info: Figuras/normal_wavelet_aceleracao_30.png  used on inpu
-t line 541.
+t line 546.
 (pdftex.def)             Requested size: 239.39923pt x 130.41791pt.
+
+Underfull \vbox (badness 5260) has occurred while \output is active []
+
+<Figuras/desba_chave.jpg, id=96, 1606.0pt x 1204.5pt>
+File: Figuras/desba_chave.jpg Graphic file (type jpg)
+<use Figuras/desba_chave.jpg>
+Package pdftex.def Info: Figuras/desba_chave.jpg  used on input line 560.
+(pdftex.def)             Requested size: 126.0pt x 94.48729pt.
+<Figuras/desbalanceamento_desb_vel_30.png, id=97, 816.80156pt x 453.19313pt>
+File: Figuras/desbalanceamento_desb_vel_30.png Graphic file (type png)
+<use Figuras/desbalanceamento_desb_vel_30.png>
+Package pdftex.def Info: Figuras/desbalanceamento_desb_vel_30.png  used on inpu
+t line 570.
+(pdftex.def)             Requested size: 239.39923pt x 132.82642pt.
+ [8 <./Figuras/normal_hilbert_fft_30.png> <./Figuras/normal_wavelet_aceleracao_
+30.png> <./Figuras/desba_chave.jpg> <./Figuras/desbalanceamento_desb_vel_30.png
+>]
+<Figuras/desbalanceamento_desb_fft_30.png, id=104, 806.26219pt x 467.49657pt>
+File: Figuras/desbalanceamento_desb_fft_30.png Graphic file (type png)
+<use Figuras/desbalanceamento_desb_fft_30.png>
+Package pdftex.def Info: Figuras/desbalanceamento_desb_fft_30.png  used on inpu
+t line 596.
+(pdftex.def)             Requested size: 239.39923pt x 138.8091pt.
+
+Underfull \hbox (badness 2088) in paragraph at lines 602--603
+\OT1/ptm/m/n/10 harm[]onicas iden-ti-fi-cadas an-te-ri-or-mente na condi[][]ao 
+sem
+ []
+
+<Figuras/fft_acel_30_desbalanceamento.png, id=105, 803.25093pt x 325.96782pt>
+File: Figuras/fft_acel_30_desbalanceamento.png Graphic file (type png)
+<use Figuras/fft_acel_30_desbalanceamento.png>
+Package pdftex.def Info: Figuras/fft_acel_30_desbalanceamento.png  used on inpu
+t line 606.
+(pdftex.def)             Requested size: 239.39923pt x 97.14946pt.
+<Figuras/desbalanceamento_hilbertFFT_30.png, id=106, 804.75656pt x 444.91219pt>
+
+File: Figuras/desbalanceamento_hilbertFFT_30.png Graphic file (type png)
+<use Figuras/desbalanceamento_hilbertFFT_30.png>
+Package pdftex.def Info: Figuras/desbalanceamento_hilbertFFT_30.png  used on in
+put line 616.
+(pdftex.def)             Requested size: 239.39923pt x 132.34773pt.
+<Figuras/desbalanceamento_wavelet_30.png, id=107, 806.26219pt x 443.40656pt>
+File: Figuras/desbalanceamento_wavelet_30.png Graphic file (type png)
+<use Figuras/desbalanceamento_wavelet_30.png>
+Package pdftex.def Info: Figuras/desbalanceamento_wavelet_30.png  used on input
+ line 626.
+(pdftex.def)             Requested size: 239.39923pt x 131.6563pt.
+
+Underfull \hbox (badness 2277) in paragraph at lines 632--633
+\OT1/ptm/m/n/10 demon-strando a ca-paci-dade do prot[]otipo de de-tec-tar a
+ []
+
+<Figuras/desbalanceamentoalarmes.png, id=108, 486.31688pt x 246.9225pt>
+File: Figuras/desbalanceamentoalarmes.png Graphic file (type png)
+<use Figuras/desbalanceamentoalarmes.png>
+Package pdftex.def Info: Figuras/desbalanceamentoalarmes.png  used on input lin
+e 636.
+(pdftex.def)             Requested size: 239.39923pt x 121.55069pt.
+
+Underfull \hbox (badness 1810) in paragraph at lines 644--645
+\OT1/ptm/m/n/10 de folga mec[]anica. De-v-ido []a na-tureza tran-sit[]oria dess
+e
+ []
+
+[9 <./Figuras/desbalanceamento_desb_fft_30.png> <./Figuras/fft_acel_30_desbalan
+ceamento.png> <./Figuras/desbalanceamento_hilbertFFT_30.png> <./Figuras/desbala
+nceamento_wavelet_30.png>]
+<Figuras/impacto_vel.png, id=116, 800.23969pt x 441.14813pt>
+File: Figuras/impacto_vel.png Graphic file (type png)
+<use Figuras/impacto_vel.png>
+Package pdftex.def Info: Figuras/impacto_vel.png  used on input line 650.
+(pdftex.def)             Requested size: 239.39923pt x 131.96849pt.
+<Figuras/impacto_vel_fft.png, id=117, 806.26219pt x 444.15938pt>
+File: Figuras/impacto_vel_fft.png Graphic file (type png)
+<use Figuras/impacto_vel_fft.png>
+Package pdftex.def Info: Figuras/impacto_vel_fft.png  used on input line 660.
+(pdftex.def)             Requested size: 239.39923pt x 131.8798pt.
+<Figuras/impacto_acel_wavelet.png, id=118, 617.30624pt x 271.0125pt>
+File: Figuras/impacto_acel_wavelet.png Graphic file (type png)
+<use Figuras/impacto_acel_wavelet.png>
+Package pdftex.def Info: Figuras/impacto_acel_wavelet.png  used on input line 6
+70.
+(pdftex.def)             Requested size: 239.39923pt x 105.10309pt.
+<Figuras/alarmes_impacto.png, id=119, 486.31688pt x 246.9225pt>
+File: Figuras/alarmes_impacto.png Graphic file (type png)
+<use Figuras/alarmes_impacto.png>
+Package pdftex.def Info: Figuras/alarmes_impacto.png  used on input line 680.
+(pdftex.def)             Requested size: 239.39923pt x 121.55069pt.
  (main.bbl
 Underfull \hbox (badness 3407) in paragraph at lines 35--39
 []\OT1/ptm/m/n/8 R. B. Ran-dall, \OT1/ptm/m/it/8 Vibration-based Con-di-tion Mo
 n-i-tor-ing: In-dus-trial,
  []
 
-)
+[10 <./Figuras/desbalanceamentoalarmes.png> <./Figuras/impacto_vel.png> <./Figu
+ras/impacto_vel_fft.png> <./Figuras/impacto_acel_wavelet.png> <./Figuras/alarme
+s_impacto.png>])
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -541,8 +635,9 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[8 <./Figuras/normal_hilbert_fft_30.png> <./Figuras/normal_wavelet_aceleracao_3
-0.png>] (main.aux)
+[11
+
+] (main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
@@ -553,13 +648,13 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 4767 strings out of 467871
- 76965 string characters out of 5418376
- 532866 words of memory out of 5000000
- 33576 multiletter control sequences out of 15000+600000
+ 4857 strings out of 467871
+ 80241 string characters out of 5418376
+ 533152 words of memory out of 5000000
+ 33666 multiletter control sequences out of 15000+600000
  677529 words of font info for 139 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,16n,83p,1439b,369s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,16n,83p,1427b,359s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/gabri/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmex10.pfb><C:/Users/gabri/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
 fonts/cm/cmmi10.pfb><C:/Users/gabri/AppData/Local/Programs/MiKTeX/fonts/type1/p
@@ -574,9 +669,9 @@ Users/gabri/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/
 Users/gabri/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:
 /Users/gabri/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:
 /Users/gabri/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (8 pages, 775900 bytes).
+Output written on main.pdf (11 pages, 1404814 bytes).
 PDF statistics:
- 156 PDF objects out of 1000 (max. 8388607)
+ 186 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 61 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 116 words of extra memory for PDF output out of 10000 (max. 10000000)
 

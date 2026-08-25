@@ -63,11 +63,11 @@ as one part of the entire proceedings, and not as an independent document.
 Please do not revise any of the current designations.
 
 \section{Fundamentação Teórica}
-Segundo \cite{girdhar2004practical}, com o avanço tecnológico e as sucessivas revoluções
+Com o avanço tecnológico e as sucessivas revoluções
 industriais, houve um crescente investimento e valorização da manutenção, uma vez que
 paradas não planejadas resultam em prejuízos econômicos significativos para setores
 específicos ou para a organização como um todo. Nesse cenário, uma falha inesperada
-pode ser devastadora para o fluxo produtivo. 
+pode ser prejudicial para o fluxo produtivo \cite{girdhar2004practical}. 
 
 
 \subsection{Manutenção Corretiva}
@@ -82,12 +82,12 @@ A manutenção preventiva introduz o planejamento das intervenções, normalment
 
 A manutenção preditiva (\textit{Predictive Maintenance} -- PdM) busca superar as limitações das estratégias baseadas exclusivamente na ocorrência da falha ou em intervalos de tempo predefinidos, fundamentando as decisões de intervenção na condição real do ativo. Seu objetivo é maximizar a disponibilidade do equipamento e aproveitar de forma mais eficiente a vida útil dos componentes, utilizando medições obtidas durante a operação ou em inspeções periódicas \cite{girdhar2004practical,randall2011vibration}.
 
-O processo de manutenção preditiva pode ser dividido, de forma geral, nas etapas de monitoramento, diagnóstico e prognóstico. Inicialmente, parâmetros físicos relacionados ao estado do equipamento são monitorados por meio de sensores. Os dados obtidos são então processados para identificar alterações no comportamento do ativo e características associadas a possíveis modos de falha. A partir dessas informações, torna-se possível determinar a necessidade de intervenção e, em aplicações mais avançadas, estimar a evolução da degradação e a vida útil remanescente do componente \cite{randall2011vibration}. Dessa forma, a decisão de manutenção deixa de depender exclusivamente de intervalos cronológicos e passa a considerar evidências obtidas diretamente do equipamento.
+O processo de manutenção preditiva pode ser dividido, de forma geral, nas etapas de monitoramento, diagnóstico e prognóstico. Inicialmente, parâmetros físicos relacionados ao estado do equipamento são monitorados por meio de sensores. Os dados obtidos são então processados para identificar alterações no comportamento do ativo e características associadas a possíveis modos de falha. A partir dessas informações, torna-se possível determinar a necessidade de intervenção e, em aplicações mais avançadas, estimar a evolução da degradação e a vida útil remanescente do componente. Dessa forma, a decisão de manutenção deixa de depender exclusivamente de intervalos cronológicos e passa a considerar evidências obtidas diretamente do equipamento\cite{randall2011vibration, ElHammoumi2025}.
 
 A seleção da estratégia de monitoramento deve considerar a criticidade do ativo, os modos de falha existentes, os parâmetros físicos mensuráveis e a relação entre o custo da implementação e os benefícios esperados. Conforme apresentado na Fig.~\ref{fig:fluxograma_manutencao}, a metodologia envolve a identificação da criticidade e dos modos de falha, a seleção dos parâmetros e técnicas de medição, a definição dos limiares de alarme e a comparação dos dados obtidos com as condições estabelecidas. Quando os parâmetros monitorados ultrapassam os limites definidos, o diagnóstico fornece subsídios para a determinação da ação de manutenção \cite{iso17359_2018}.
 \begin{figure}[!t]
     \centering
-    \includegraphics[width=\columnwidth]{Figuras/diagrama.pdf}
+    \includegraphics[width=0.8\columnwidth]{Figuras/diagrama.pdf}
     \caption{Procedimento geral para monitoramento de condição e diagnóstico de máquinas, adaptado de \cite{iso17359_2018}.}
     \label{fig:fluxograma_manutencao}
 \end{figure}
@@ -121,9 +121,7 @@ A análise desses sinais pode ser realizada tanto no domínio do tempo quanto no
 
 \begin{table}[!t]
 \centering
-\caption{Quadro de Severidade de Velocidade de Vibração}
-\label{quadro:niveis_severidade}
-
+\renewcommand{\tablename}{Quadro}
 \renewcommand{\arraystretch}{1.3}
 \small
 \label{quadro:severidade}
@@ -224,19 +222,20 @@ A análise desses sinais pode ser realizada tanto no domínio do tempo quanto no
 \end{tabular}
 
 \vspace{0.1cm}
+\caption{Quadro de Severidade de Velocidade de Vibração}
+\label{quadro:niveis_severidade}
 
-{\footnotesize Fonte: Adaptado de \citeonline{santos2023analise}.}
+{\footnotesize Fonte: Adaptado de \cite{santos2023analise} e \cite{iso10816}.}
 
 \end{table}
 
+\renewcommand{\tablename}{Table}
 No Quadro \ref{table:diagnostico_defeitos} é apresentado a correlação entre falhas comuns e suas manifestações espectrais. Para o processamento da FFT, o sinal deve ter comprimento finito, o que exige o uso de funções de janelamento. No escopo deste trabalho, utiliza-se a janela de Hamming \cite{girdhar2004practical}, cuja resposta em frequência reduz o vazamento espectral (\textit{spectral leakage}) para as bandas vizinhas. Vale ressaltar que janelas mais curtas aumentam a resolução temporal, porém sacrificam a resolução em frequência.
 \begin{table*}[!t] % O asterisco faz o quadro ocupar a largura das duas colunas
 \centering
 
 % Truque para renomear temporariamente "Table" para "Quadro" no IEEE
 \renewcommand{\tablename}{Quadro}
-\caption{Diagnóstico de defeitos mecânicos e suas assinaturas vibratórias.}
-\label{quadro:diagnostico_defeitos}
 
 % Garante que as colunas tipo X centralizem verticalmente (m)
 \renewcommand{\tabularxcolumn}[1]{m{#1}}
@@ -254,6 +253,10 @@ Cavitação (Bombas) & Ruído de fundo elevado (piso do gráfico sobe) em altas 
 
 \vspace{4pt}
 % Substitui o \legend do ABNTeX2
+
+\caption{Diagnóstico de defeitos mecânicos e suas assinaturas vibratórias.}
+\label{quadro:diagnostico_defeitos}
+\vspace{0.1cm}
 {\footnotesize Fonte: Adaptado de \cite{randall2011vibration}.}
 
 % Retorna o nome padrão caso existam outras tabelas no artigo
@@ -349,6 +352,7 @@ Para a integração dos componentes, foi desenvolvida uma placa de circuito impr
 
 O custo dos componentes utilizados no protótipo é apresentado na Tabela~\ref{tab:custos_componentes}, evidenciando o baixo custo de implementação do sistema.
 
+\renewcommand{\tablename}{Quadro}
 \begin{table}[!t]
     \centering
     \caption{Estimativa de custos dos componentes do protótipo.}
@@ -369,15 +373,16 @@ O custo dos componentes utilizados no protótipo é apresentado na Tabela~\ref{t
     \end{tabular}
     
     \vspace{0.2cm}
-    
     {\footnotesize Fonte: Elaborado pelo autor.}
 \end{table}
+    
+\renewcommand{\tablename}{Table}
 \subsection{Software}
 Para o desenvolvimento do firmware do microcontrolador XIAO ESP32-C6, foi utilizada a linguagem C++, empregando o ambiente \textit{PlatformIO} como extensão do \textit{Visual Studio Code}. A utilização dessa ferramenta possibilitou o gerenciamento das dependências do projeto, a configuração da plataforma de desenvolvimento e a organização do código destinado à aquisição e ao processamento inicial dos sinais de vibração.
 
 A interface gráfica e o processamento dos dados foram desenvolvidos em \textit{Python}, utilizando o \textit{framework PySide6} para a construção da interface. A biblioteca \textit{NumPy} foi empregada para a manipulação e o processamento dos dados numéricos, enquanto a biblioteca \textit{SciPy} foi utilizada na aplicação de métodos de processamento digital de sinais, incluindo as transformadas de Fourier e de Hilbert.
 
-Para o armazenamento e o gerenciamento dos dados em nuvem, foi utilizada a biblioteca \textit{firebase-admin}, responsável pela integração da aplicação com o banco de dados \textit{Firebase}. Essa estrutura permitiu o armazenamento de informações relacionadas aos equipamentos monitorados, usuários, alarmes e dados adquiridos durante as medições.
+Para o armazenamento e o gerenciamento dos dados em nuvem, foi utilizada a biblioteca \textit{firebase-admin}, responsável pela integração da aplicação com o banco de dados \textit{Firebase}. Essa estrutura permitiu o armazenamento de informações relacionadas aos equipamentos monitorados, usuários e alarmes.
 
 Para o desenvolvimento e a organização do software, foram utilizados os ambientes \textit{Visual Studio Code} e \textit{PyCharm}. Adicionalmente, o \textit{Qt Designer} foi empregado na concepção da interface gráfica, permitindo a elaboração visual dos elementos da aplicação e reduzindo a necessidade de implementação manual dos componentes da interface por meio do \textit{PySide6}.
 
@@ -389,11 +394,11 @@ O sistema proposto foi desenvolvido para realizar a aquisição, transmissão e 
 
 No modo \textit{online}, também denominado monitoramento contínuo, o dispositivo permanece conectado à Internet por meio de uma rede \textit{Wi-Fi} e realiza a transmissão dos dados utilizando o protocolo \textit{WebSocket}. A utilização desse protocolo permite o estabelecimento de uma comunicação bidirecional entre o dispositivo e o computador, mantendo a conexão disponível para o envio e o recebimento de dados. Para a operação nesse modo, o usuário deve configurar o endereço IP do computador, as credenciais da rede \textit{Wi-Fi} e selecionar o modo correspondente na interface supervisória antes do início da aquisição. A principal limitação dessa configuração está relacionada ao consumo de energia, que pode atingir aproximadamente 220~mA durante a transmissão, tornando necessária, em aplicações prolongadas, a utilização de uma fonte de alimentação externa, em função da capacidade limitada da bateria de 600~mAh.
 
-O modo \textit{offline} foi desenvolvido com o objetivo de reduzir o consumo energético do dispositivo. Nessa configuração, o sensor realiza aquisições periódicas previamente programadas e, caso seja identificado um nível de velocidade de vibração superior ao limiar estabelecido, os dados da aquisição são armazenados em formato binário e, posteriormente, disponibilizados por meio do \textit{Google Drive}. A utilização dessa plataforma permite a sincronização dos arquivos com o computador do operador, possibilitando que os dados adquiridos sejam acessados e processados pela interface gráfica. Dessa forma, o sistema permite a realização de análises semelhantes às disponíveis no monitoramento contínuo, mesmo sem a necessidade de manter o dispositivo permanentemente conectado à rede.
+O modo \textit{offline} foi desenvolvido com o objetivo de reduzir o consumo energético do dispositivo. Nessa configuração, o sensor realiza aquisições periódicas previamente programadas e, caso seja identificado um valor de velocidade RMS ou pico de vibração superior ao limiar estabelecido na interface supervisória, os dados da aquisição são armazenados em formato binário e, posteriormente, disponibilizados por meio do \textit{Google Drive}. A utilização dessa plataforma permite a sincronização dos arquivos com o computador do operador, possibilitando que os dados adquiridos sejam acessados e processados pela interface gráfica. Dessa forma, o sistema permite a realização de análises semelhantes às disponíveis no monitoramento contínuo, mesmo sem a necessidade de manter o dispositivo permanentemente conectado à rede.
 
 O modo \textit{serial} foi desenvolvido para aplicações nas quais se deseja reduzir a latência da comunicação e utilizar uma fonte de alimentação estável por meio da interface USB. Nessa configuração, a alimentação do dispositivo é realizada diretamente pelo barramento USB, eliminando a dependência da bateria durante a operação. As verificações de alarme são iniciadas manualmente pelo operador por meio do comando ``MODO SERIAL'' disponibilizado na interface supervisória.
 
-Além dos modos de aquisição, o sistema possui uma arquitetura destinada ao monitoramento e à análise dos sinais adquiridos. Após o início de uma aquisição, a interface supervisória recebe as amostras e apresenta os sinais nos domínios do tempo e da frequência. A partir dos dados de aceleração obtidos, é calculada a velocidade por meio das seguintes etapas: remoção do \textit{offset}, aplicação de um filtro passa-altas de Butterworth de quarta ordem com frequência de corte de 10~Hz, integração numérica, remoção da tendência linear e, por fim, aplicação de um segundo filtro passa-altas de quarta ordem, também com frequência de corte de 10~Hz. Em seguida, a partir do sinal de velocidade, são calculados o valor eficaz (\textit{Root Mean Square} -- RMS) e o valor de pico da vibração. Esses parâmetros são comparados com os limiares de alarme definidos pelo usuário, os quais são independentes dos limites de severidade estabelecidos pela norma ISO 10816, conforme apresentado no Quadro~\ref{quadro:niveis_severidade}.
+Além dos modos de aquisição, o sistema possui uma arquitetura destinada ao monitoramento e à análise dos sinais adquiridos. Após o início de uma aquisição, a interface supervisória recebe as amostras e apresenta os sinais nos domínios do tempo e da frequência. A partir dos dados de aceleração obtidos, é calculada a velocidade por meio das seguintes etapas: remoção do \textit{offset}, aplicação de um filtro passa-altas de Butterworth de quarta ordem com frequência de corte de 10~Hz, integração numérica, remoção da tendência linear e, por fim, aplicação de um segundo filtro passa-altas de quarta ordem, também com frequência de corte de 10~Hz. Em seguida, a partir do sinal de velocidade, são calculados o valor RMS e o valor de pico da vibração. Esses parâmetros são comparados com os limiares de alarme definidos pelo usuário, os quais são independentes dos limites de severidade estabelecidos pela norma ISO 10816, conforme apresentado no Quadro~\ref{quadro:niveis_severidade}.
 
 Quando os valores de RMS ou de pico ultrapassam os respectivos limiares configurados, o sistema verifica a existência de alarmes previamente registrados durante o ciclo de monitoramento vigente. Na ausência de um alarme anterior, são executados os algoritmos de processamento digital de sinais (PDS) empregados para a identificação das características associadas ao aumento da energia vibratória. A partir dos resultados obtidos, é realizada a estimativa da possível condição de falha, sendo posteriormente encaminhado um e-mail contendo o diagnóstico provável.
 
@@ -450,7 +455,7 @@ A metodologia experimental consistiu na análise do MIT em três condições dis
     \vspace{0.2cm}
     \includegraphics[width=0.5\columnwidth]{Figuras/motoTeste.png}
     \vspace{0.1cm}
-    
+
     {\footnotesize Fonte: Elaborado pelo autor.}
 \end{figure}
 
@@ -544,6 +549,139 @@ Na condição de operação sem perturbações, a análise por wavelet apresento
 \end{figure}
 
 
+\subsection{Análise do MIT com perturbação: desbalanceamento}
+
+Após a conclusão das análises do motor em condições normais de operação, foi introduzida uma perturbação mecânica no eixo do motor, com o objetivo de provocar uma condição de desbalanceamento. A partir dessa condição, foram repetidas as análises realizadas anteriormente, permitindo comparar o comportamento vibratório do equipamento antes e após a introdução da perturbação.
+
+Para induzir o desbalanceamento, uma chave Allen foi fixada ao eixo do motor por meio de uma abraçadeira plástica, conforme apresentado na Figura~\ref{fig:perturbacaoDesbalanceamento}.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.5\columnwidth]{Figuras/desba_chave.jpg}
+    \caption{Perturbação induzida no MIT por meio de carga desbalanceadora.}
+    \label{fig:perturbacaoDesbalanceamento}
+    {\footnotesize Fonte: Elaborado pelo autor.}
+\end{figure}
+
+Após o acionamento do motor novamente a 30 Hz, foi obtido o sinal de velocidade apresentado na Figura~\ref{fig:desbalanceamentoVel}. Observa-se uma alteração significativa no comportamento do sinal, especialmente no eixo $Y$, que apresenta uma característica aproximadamente senoidal. Esse comportamento indica a predominância de uma componente periódica em relação às demais componentes presentes no sinal, diferindo do comportamento observado para o motor sem a carga desbalanceadora, apresentado na Figura~\ref{fig:normal_velocidade_30}.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.95\columnwidth]{Figuras/desbalanceamento_desb_vel_30.png}
+    \caption{Desbalanceamento: velocidade no domínio do tempo.}
+    \label{fig:desbalanceamentoVel}
+    {\footnotesize Fonte: Elaborado pelo autor.}
+\end{figure}
+
+A aplicação da FFT ao sinal de velocidade permitiu verificar essa
+característica no domínio da frequência. Conforme apresentado na
+Figura~\ref{fig:desbalanceamentoFFT_vel}, observa-se uma componente
+predominante próxima a 15 Hz no eixo $Y$. Considerando que o motor
+apresenta velocidade nominal de 1800 rpm a 60 Hz, a operação do
+inversor a 30 Hz corresponde, para as condições do ensaio, a uma
+velocidade de aproximadamente 900 rpm, equivalente a uma frequência
+de rotação de 15 Hz.
+
+A presença de uma componente predominante em aproximadamente
+$1\times f_{\mathrm{rot}}$, coincidente com a frequência de rotação do
+eixo, é característica do comportamento vibratório associado ao
+desbalanceamento. Isso ocorre porque a massa desbalanceadora produz
+uma força centrífuga periódica cuja frequência de repetição é igual à
+frequência de rotação do eixo. Dessa forma, o pico observado em
+aproximadamente 15 Hz constitui uma evidência experimental da
+condição de desbalanceamento introduzida no motor.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.95\columnwidth]{Figuras/desbalanceamento_desb_fft_30.png}
+    \caption{Desbalanceamento: FFT da velocidade.}
+    \label{fig:desbalanceamentoFFT_vel}
+    {\footnotesize Fonte: Elaborado pelo autor.}
+\end{figure}
+
+Na análise da FFT do sinal de aceleração, apresentada na Figura~\ref{fig:desbalanceamentofft_acel}, observa-se a permanência das componentes harmônicas identificadas anteriormente na condição sem perturbação, apresentada na Figura~\ref{fig:FFT_aceleracao}. Entretanto, a presença de uma componente de elevada amplitude próxima a 15 Hz no eixo $Y$ faz com que as demais componentes apresentem menor contribuição relativa no espectro.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.95\columnwidth]{Figuras/fft_acel_30_desbalanceamento.png}
+    \caption{Desbalanceamento: FFT da aceleração.}
+    \label{fig:desbalanceamentofft_acel}
+    {\footnotesize Fonte: Elaborado pelo autor.}
+\end{figure}
+
+A partir dessas análises, observa-se que a perturbação provocada pelo desbalanceamento está predominantemente associada às componentes de menor frequência, apresentando menor influência relativa nas componentes de frequência mais elevada. Para verificar essa característica, foi aplicada a análise do sinal envelopado por meio da transformada de Hilbert, conforme apresentado na Figura~\ref{fig:desbalanceamentohilbert}. Em comparação com o resultado obtido para a condição sem perturbação, apresentado na Figura~\ref{fig:FFT_hilbert}, observa-se comportamento espectral semelhante, indicando que a perturbação introduzida não provocou alterações significativas nas componentes de alta frequência analisadas pelo método.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.95\columnwidth]{Figuras/desbalanceamento_hilbertFFT_30.png}
+    \caption{Desbalanceamento: FFT do sinal envelopado.}
+    \label{fig:desbalanceamentohilbert}
+    {\footnotesize Fonte: Elaborado pelo autor.}
+\end{figure}
+
+Por fim, foi aplicada a transformada de wavelet ao sinal de aceleração, conforme apresentado na Figura~\ref{fig:waveletDesba}. Observa-se uma maior concentração de componentes na representação tempo-frequência, evidenciada pela presença de regiões de maior intensidade associadas à periodicidade da vibração. Esse comportamento permite visualizar a ocorrência da perturbação ao longo do intervalo de aquisição e complementa a análise realizada no domínio da frequência.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.95\columnwidth]{Figuras/desbalanceamento_wavelet_30.png}
+    \caption{Desbalanceamento: transformada de wavelet.}
+    \label{fig:waveletDesba}
+    {\footnotesize Fonte: Elaborado pelo autor.}
+\end{figure}
+
+Como consequência do aumento do nível de vibração provocado pelo desbalanceamento, o sistema supervisório identificou a condição de alarme previamente configurada. O resultado apresentado pelo sistema é mostrado na Figura~\ref{fig:alarmeDesba}, demonstrando a capacidade do protótipo de detectar a alteração no comportamento vibratório e gerar o respectivo alarme.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.95\columnwidth]{Figuras/desbalanceamentoalarmes.png}
+    \caption{Alarme emitido para a condição de desbalanceamento.}
+    \label{fig:alarmeDesba}
+    {\footnotesize Fonte: Elaborado pelo autor.}
+\end{figure}
+
+\subsection{Análise do MIT com perturbação: impacto}
+
+Por fim, foram realizados ensaios com impactos mecânicos aplicados ao MIT, com o objetivo de simular uma condição de folga mecânica. Devido à natureza transitória desse fenômeno, foram priorizadas análises capazes de evidenciar sua ocorrência no domínio do tempo e no domínio tempo-frequência.
+
+No domínio do tempo, observa-se na Figura~\ref{fig:impactoVel} um pico elevado de velocidade seguido por uma resposta de amplitude decrescente até o retorno ao regime estacionário. Esse comportamento evidencia a característica transitória do impacto e sua diferença em relação à condição de operação sem perturbação.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.95\columnwidth]{Figuras/impacto_vel.png}
+    \caption{MIT com impacto: sinal de velocidade.}
+    \label{fig:impactoVel}
+    {\footnotesize Fonte: Elaborado pelo autor.}
+\end{figure}
+
+A FFT do sinal de velocidade, apresentada na Figura~\ref{fig:FFTimpactoVel}, evidencia a distribuição das componentes espectrais associadas ao evento transitório, com maior concentração nas baixas frequências e redução progressiva de sua contribuição.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.95\columnwidth]{Figuras/impacto_vel_fft.png}
+    \caption{MIT com impacto: FFT do sinal de velocidade.}
+    \label{fig:FFTimpactoVel}
+    {\footnotesize Fonte: Elaborado pelo autor.}
+\end{figure}
+
+A análise por transformada de wavelet, apresentada na Figura~\ref{fig:waveletImpacto}, permitiu localizar temporalmente o evento e identificar a faixa de frequência associada à sua ocorrência. Observa-se uma concentração de energia em torno de 100 Hz durante um intervalo curto, seguida pela redução de sua intensidade, em concordância com o comportamento transitório observado no domínio do tempo.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.95\columnwidth]{Figuras/impacto_acel_wavelet.png}
+    \caption{MIT com impacto: transformada de wavelet.}
+    \label{fig:waveletImpacto}
+    {\footnotesize Fonte: Elaborado pelo autor.}
+\end{figure}
+
+Em um dos ensaios, o sistema supervisório classificou a ocorrência como severidade D, conforme apresentado na Figura~\ref{fig:alarmImpacto}. O resultado foi associado à ocorrência de um elevado valor de pico de velocidade, enquanto o valor RMS permaneceu relativamente baixo, característica compatível com um evento impulsivo.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.95\columnwidth]{Figuras/alarmes_impacto.png}
+    \caption{Alarme de severidade D associado ao impacto.}
+    \label{fig:alarmImpacto}
+    {\footnotesize Fonte: Elaborado pelo autor.}
+\end{figure}
 
 
 
@@ -556,8 +694,5 @@ Na condição de operação sem perturbações, a análise por wavelet apresento
 % Aponta para o seu arquivo .bib (substitua 'references' pelo nome do seu arquivo, sem a extensão)
 \bibliography{references}
 
-\vspace{12pt}
-\color{red}
-IEEE conference templates contain guidance text for composing and formatting conference papers. Please ensure that all template text is removed from your conference paper prior to submission to the conference. Failure to remove the template text from your paper may result in your paper not being published.
 
 \end{document}
