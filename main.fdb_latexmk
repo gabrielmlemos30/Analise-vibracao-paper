@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex main"] 1787701045.00288 "main.aux" "main.bbl" "main" 1787701051.4345 0
+["bibtex main"] 1787873009.12332 "main.aux" "main.bbl" "main" 1787873034.85334 0
   "./IEEEtran.bst" 1785675510 61632 bc5380b3434a66b895bbc75d3d380540 ""
   "./references.bib" 1787699466 10459 4e540ec837bb1e8d9b4ea3e8ec7d4ff5 ""
-  "main.aux" 1787701049 9063 01dc1a6fea1db4677adb5d90895bd77c "pdflatex"
+  "main.aux" 1787873032 9097 6bff05671b3ec65334cad4cf2cea3b58 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1787701045.70439 "c:/Code/Analise-vibracao-paper/main.tex" "main.pdf" "main" 1787701051.43651 0
+["pdflatex"] 1787873026.51537 "c:/Code/Analise-vibracao-paper/main.tex" "main.pdf" "main" 1787873034.85512 0
   "C:/Users/gabri/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1786278533 82507 a9eef8696c92627b87e9975edea03b2a ""
   "C:/Users/gabri/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1774814192 13333487 87f4c4f130f5bc7e7e1dab44a37505fc ""
   "C:/Users/gabri/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc" 1458473887 4993 80dc9bab7f31fb78a000ccfed0e27cab ""
@@ -120,10 +120,10 @@
   "Figuras/sensor_fix.jpg" 1781570171 109958 6209907f383f3df123a70a7de3a1f886 ""
   "Figuras/supervisorioMain.png" 1776528215 164821 302c98a5fc6627dc67060a3015c9dc85 ""
   "IEEEtran.cls" 1785675510 288304 5b2e4fa15b0f7eabb840ebf67df4c0f7 ""
-  "c:/Code/Analise-vibracao-paper/main.tex" 1787701037 48593 e7f0a46a1ec431f22ea7b346cefa592a ""
-  "main.aux" 1787701049 9063 01dc1a6fea1db4677adb5d90895bd77c "pdflatex"
-  "main.bbl" 1787701045 2935 9b7964ff7f7a86db98f16fb74077ad6a "bibtex main"
-  "main.tex" 1787701037 48593 e7f0a46a1ec431f22ea7b346cefa592a ""
+  "c:/Code/Analise-vibracao-paper/main.tex" 1787873024 49972 0caee7aca3101429d83de37d8a98b7d0 ""
+  "main.aux" 1787873032 9097 6bff05671b3ec65334cad4cf2cea3b58 "pdflatex"
+  "main.bbl" 1787873009 2935 9b7964ff7f7a86db98f16fb74077ad6a "bibtex main"
+  "main.tex" 1787873024 49972 0caee7aca3101429d83de37d8a98b7d0 ""
   (generated)
   "main.aux"
   "main.log"

@@ -199,8 +199,6 @@ INPUT C:\Users\gabri\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmr7t.v
 INPUT C:\Users\gabri\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmr8r.tfm
 INPUT C:\Users\gabri\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmrc7t.vf
 INPUT C:\Users\gabri\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmr8r.tfm
-INPUT C:\Users\gabri\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmb7t.vf
-INPUT C:\Users\gabri\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmb8r.tfm
 INPUT .\Figuras\prot_01.png
 INPUT .\Figuras\prot_01.png
 INPUT .\Figuras\prot_01.png
@@ -243,6 +241,8 @@ INPUT .\Figuras\sensor_fix.jpg
 INPUT .\Figuras\sensor_fix.jpg
 INPUT .\Figuras\sensor_fix.jpg
 INPUT .\Figuras\sensor_fix.jpg
+INPUT C:\Users\gabri\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmb7t.vf
+INPUT C:\Users\gabri\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmb8r.tfm
 INPUT .\Figuras\normal_velocidade_30.png
 INPUT .\Figuras\normal_velocidade_30.png
 INPUT .\Figuras\normal_velocidade_30.png

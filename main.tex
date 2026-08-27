@@ -13,7 +13,7 @@
 \usepackage{booktabs}
 \usepackage{tabularx}      % Para o ambiente tabularx
 \newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
-
+\renewcommand{\thetable}{\Roman{table}}
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 
@@ -124,7 +124,6 @@ A análise desses sinais pode ser realizada tanto no domínio do tempo quanto no
 \renewcommand{\tablename}{Quadro}
 \renewcommand{\arraystretch}{1.3}
 \small
-\label{quadro:severidade}
 \begin{tabular}{|C{1.05cm}|C{1.05cm}|C{1.05cm}|C{1.05cm}|C{1.05cm}|C{1.05cm}|}
 \hline
 \textbf{$x_{\text{rms}}$ (mm/s)} &
@@ -223,14 +222,15 @@ A análise desses sinais pode ser realizada tanto no domínio do tempo quanto no
 
 \vspace{0.1cm}
 \caption{Quadro de Severidade de Velocidade de Vibração}
-\label{quadro:niveis_severidade}
+
+\label{quadro:severidade}
 
 {\footnotesize Fonte: Adaptado de \cite{santos2023analise} e \cite{iso10816}.}
 
 \end{table}
 
 \renewcommand{\tablename}{Table}
-No Quadro \ref{table:diagnostico_defeitos} é apresentado a correlação entre falhas comuns e suas manifestações espectrais. Para o processamento da FFT, o sinal deve ter comprimento finito, o que exige o uso de funções de janelamento. No escopo deste trabalho, utiliza-se a janela de Hamming \cite{girdhar2004practical}, cuja resposta em frequência reduz o vazamento espectral (\textit{spectral leakage}) para as bandas vizinhas. Vale ressaltar que janelas mais curtas aumentam a resolução temporal, porém sacrificam a resolução em frequência.
+No Quadro \ref{quadro:diagnostico_defeitos} é apresentado a correlação entre falhas comuns e suas manifestações espectrais. Para o processamento da FFT, o sinal deve ter comprimento finito, o que exige o uso de funções de janelamento. No escopo deste trabalho, utiliza-se a janela de Hamming \cite{girdhar2004practical}, cuja resposta em frequência reduz o vazamento espectral (\textit{spectral leakage}) para as bandas vizinhas. Vale ressaltar que janelas mais curtas aumentam a resolução temporal, porém sacrificam a resolução em frequência.
 \begin{table*}[!t] % O asterisco faz o quadro ocupar a largura das duas colunas
 \centering
 
@@ -266,7 +266,7 @@ Apesar de sua ampla aplicação na análise de vibrações, a transformada de Fo
 
 Como alternativa para a análise de sinais não estacionários, a Transformada Wavelet fornece uma representação simultaneamente relacionada à escala e à localização temporal do sinal. Essa transformação utiliza uma função denominada \textit{wavelet-mãe}, a partir da qual são obtidas funções com diferentes escalas e deslocamentos. A variação da escala permite analisar diferentes características do sinal, enquanto o deslocamento possibilita localizar essas características ao longo do tempo \cite{randall2011vibration}.
 
-A Transformada Wavelet Contínua (CWT) pode ser expressa por
+A Transformada Wavelet Contínua (CWT) pode ser expressa por (\ref{equation:wavelet}):
 
 \begin{equation}
 W(a,b) =
@@ -281,7 +281,7 @@ x(t)\psi^{*}
 
 em que $x(t)$ representa o sinal analisado, $\psi(t)$ corresponde à wavelet-mãe, $a$ representa o fator de escala, $b$ o parâmetro de deslocamento temporal e $\psi^{*}$ o complexo conjugado da função wavelet.
 
-Neste trabalho, emprega-se a wavelet de \textit{Morlet}, definida por
+Neste trabalho, emprega-se a wavelet de \textit{Morlet}, definida por (\ref{equation:morlet}):
 
 \begin{equation}
 \psi(t) =
@@ -291,7 +291,7 @@ e^{j2\pi f_0t},
 \label{equation:morlet}
 \end{equation}
 
-por apresentar características adequadas à análise de sinais oscilatórios e transitórios. A utilização de diferentes escalas permite analisar características do sinal associadas a diferentes faixas de frequência, enquanto o parâmetro de deslocamento possibilita identificar sua ocorrência ao longo do tempo. Essa característica torna a análise wavelet particularmente adequada para sinais de vibração que apresentam componentes transitórias ou variações rápidas, como impactos mecânicos e eventos associados ao desenvolvimento de determinadas falhas em componentes rotativos \cite{randall2011vibration}.
+Por apresentar características adequadas à análise de sinais oscilatórios e transitórios. A utilização de diferentes escalas permite analisar características do sinal associadas a diferentes faixas de frequência, enquanto o parâmetro de deslocamento possibilita identificar sua ocorrência ao longo do tempo. Essa característica torna a análise wavelet particularmente adequada para sinais de vibração que apresentam componentes transitórias ou variações rápidas, como impactos mecânicos e eventos associados ao desenvolvimento de determinadas falhas em componentes rotativos \cite{randall2011vibration}.
 
 Outra técnica complementar empregada na análise de vibrações é a Transformada de Hilbert, particularmente útil na análise de sinais modulados e na extração da envoltória. Essa abordagem pode ser utilizada para evidenciar componentes periódicas associadas a eventos de impacto, sendo especialmente relevante na identificação de falhas incipientes em rolamentos \cite{randall2011vibration}. A Transformada de Hilbert de um sinal $x(t)$ é definida por (\ref{equation:hilbert}).
 
@@ -303,22 +303,26 @@ Outra técnica complementar empregada na análise de vibrações é a Transforma
 \label{equation:hilbert}
 \end{equation}
 
-em que $\tilde{x}(t)$ representa a Transformada de Hilbert de $x(t)$. A partir dessa transformação, pode-se construir o sinal analítico
+em que $\tilde{x}(t)$ representa a Transformada de Hilbert de $x(t)$. A partir dessa transformação, pode-se construir o sinal analítico, conforme apresentado na Equação (\ref{equation:analitico}).
 
 \begin{equation}
-z(t) = x(t) + j\tilde{x}(t),
+z(t) = x(t) + j\tilde{x}(t)
+\label{equation:analitico}
 \end{equation}
 
-cuja magnitude fornece a envoltória do sinal,
+cuja magnitude fornece a envoltória do sinal, apresentado por (\ref{equation:module}).
 
 \begin{equation}
 x_e(t) = |z(t)|
 = \sqrt{x^2(t)+\tilde{x}^2(t)}.
+\label{equation:module}
 \end{equation}
 
 A análise da envoltória permite evidenciar modulações associadas a impactos periódicos, possibilitando a identificação de componentes relacionadas às frequências características de falhas em elementos rotativos. Dessa forma, a Transformada de Hilbert constitui uma ferramenta complementar à análise espectral convencional.
 
-No contexto deste trabalho, a FFT é empregada para a caracterização do conteúdo espectral dos sinais de vibração, enquanto a Transformada Wavelet é utilizada para a análise de fenômenos não estacionários e a Transformada de Hilbert para a análise da envoltória. A utilização conjunta dessas técnicas permite explorar diferentes características dos sinais adquiridos e fornece informações complementares para o diagnóstico da condição do equipamento.
+
+% No contexto deste artigo, a FFT é empregada na caracterização do conteudo espectral. Graças à FFT é possível, através da função de janelamento adotada, analisar a influência de cada  componente harmônica na construção do sinal de vibração, porém ao aumentar o janelamento, escala em frequência, ocorre uma perda de resolução no tempo e vice versa. Para contornar esse problema, é utilizado a transformada de \textit{wavelet}, que utili
+No contexto deste artigo, a FFT é empregada para a caracterização do conteúdo espectral dos sinais de vibração, contribuindo para o isolamento e a identificação de componentes e frequências predominantes associadas a falhas específicas, como o desbalanceamento. A Transformada Wavelet é utilizada para a análise de fenômenos não estacionários, contribuindo com uma representação simultânea de alta resolução no tempo e na frequência, o que permitiu localizar e evidenciar eventos transitórios de curta duração, como impactos mecânicos rápidos. Por sua vez, a Transformada de Hilbert é aplicada para a análise da envoltória, contribuindo para a demodulação do sinal e a revelação de falhas prematuras e incipientes em rolamentos (frequências de defeito como BPFO e BPFI) que atuariam em altas frequências e seriam imperceptíveis na análise espectral convencional devido aos baixos níveis de amplitude. A utilização conjunta dessas técnicas permite explorar diferentes características dos sinais adquiridos e fornece informações complementares para o diagnóstico da condição do equipamento.
 
 \section{Metodologia do Sistema}
 
@@ -350,7 +354,7 @@ Para a integração dos componentes, foi desenvolvida uma placa de circuito impr
     {\footnotesize Fonte: Elaborado pelo autor.}
 \end{figure}
 
-O custo dos componentes utilizados no protótipo é apresentado na Tabela~\ref{tab:custos_componentes}, evidenciando o baixo custo de implementação do sistema.
+O custo aproximado dos componentes utilizados no protótipo é apresentado na Tabela~\ref{tab:custos_componentes}, evidenciando o baixo custo de implementação do sistema.
 
 \renewcommand{\tablename}{Quadro}
 \begin{table}[!t]
@@ -394,11 +398,11 @@ O sistema proposto foi desenvolvido para realizar a aquisição, transmissão e 
 
 No modo \textit{online}, também denominado monitoramento contínuo, o dispositivo permanece conectado à Internet por meio de uma rede \textit{Wi-Fi} e realiza a transmissão dos dados utilizando o protocolo \textit{WebSocket}. A utilização desse protocolo permite o estabelecimento de uma comunicação bidirecional entre o dispositivo e o computador, mantendo a conexão disponível para o envio e o recebimento de dados. Para a operação nesse modo, o usuário deve configurar o endereço IP do computador, as credenciais da rede \textit{Wi-Fi} e selecionar o modo correspondente na interface supervisória antes do início da aquisição. A principal limitação dessa configuração está relacionada ao consumo de energia, que pode atingir aproximadamente 220~mA durante a transmissão, tornando necessária, em aplicações prolongadas, a utilização de uma fonte de alimentação externa, em função da capacidade limitada da bateria de 600~mAh.
 
-O modo \textit{offline} foi desenvolvido com o objetivo de reduzir o consumo energético do dispositivo. Nessa configuração, o sensor realiza aquisições periódicas previamente programadas e, caso seja identificado um valor de velocidade RMS ou pico de vibração superior ao limiar estabelecido na interface supervisória, os dados da aquisição são armazenados em formato binário e, posteriormente, disponibilizados por meio do \textit{Google Drive}. A utilização dessa plataforma permite a sincronização dos arquivos com o computador do operador, possibilitando que os dados adquiridos sejam acessados e processados pela interface gráfica. Dessa forma, o sistema permite a realização de análises semelhantes às disponíveis no monitoramento contínuo, mesmo sem a necessidade de manter o dispositivo permanentemente conectado à rede.
+O modo \textit{offline} foi desenvolvido com o objetivo de reduzir o consumo energético do dispositivo. Nessa configuração, o sensor realiza aquisições periódicas previamente programadas e, caso seja identificado um valor de velocidade RMS ou pico de vibração superior ao limiar estabelecido na interface supervisória, os dados da aquisição são armazenados em formato binário (arquivo com extensão .bin) e, posteriormente, disponibilizados por meio do \textit{Google Drive}. A utilização dessa plataforma permite a sincronização dos arquivos com o computador do operador, possibilitando que os dados adquiridos sejam acessados e processados pela interface gráfica. Dessa forma, o sistema permite a realização de análises semelhantes às disponíveis no monitoramento contínuo, mesmo sem a necessidade de manter o dispositivo permanentemente conectado à rede.
 
 O modo \textit{serial} foi desenvolvido para aplicações nas quais se deseja reduzir a latência da comunicação e utilizar uma fonte de alimentação estável por meio da interface USB. Nessa configuração, a alimentação do dispositivo é realizada diretamente pelo barramento USB, eliminando a dependência da bateria durante a operação. As verificações de alarme são iniciadas manualmente pelo operador por meio do comando ``MODO SERIAL'' disponibilizado na interface supervisória.
 
-Além dos modos de aquisição, o sistema possui uma arquitetura destinada ao monitoramento e à análise dos sinais adquiridos. Após o início de uma aquisição, a interface supervisória recebe as amostras e apresenta os sinais nos domínios do tempo e da frequência. A partir dos dados de aceleração obtidos, é calculada a velocidade por meio das seguintes etapas: remoção do \textit{offset}, aplicação de um filtro passa-altas de Butterworth de quarta ordem com frequência de corte de 10~Hz, integração numérica, remoção da tendência linear e, por fim, aplicação de um segundo filtro passa-altas de quarta ordem, também com frequência de corte de 10~Hz. Em seguida, a partir do sinal de velocidade, são calculados o valor RMS e o valor de pico da vibração. Esses parâmetros são comparados com os limiares de alarme definidos pelo usuário, os quais são independentes dos limites de severidade estabelecidos pela norma ISO 10816, conforme apresentado no Quadro~\ref{quadro:niveis_severidade}.
+Além dos modos de aquisição, o sistema possui uma arquitetura destinada ao monitoramento e à análise dos sinais adquiridos. Após o início de uma aquisição, a interface supervisória recebe as amostras e apresenta os sinais nos domínios do tempo e da frequência. A partir dos dados de aceleração obtidos, é calculada a velocidade por meio das seguintes etapas: remoção do \textit{offset}, aplicação de um filtro digital, integração numérica, remoção da tendência linear e, por fim, aplicação de um segundo filtro digital. Em seguida, a partir do sinal de velocidade, são calculados o valor RMS e o valor de pico da vibração. Esses parâmetros são comparados com os limiares de alarme definidos pelo usuário, os quais são independentes dos limites de severidade estabelecidos pela norma ISO 10816, conforme apresentado no Quadro~\ref{quadro:niveis_severidade}.
 
 Quando os valores de RMS ou de pico ultrapassam os respectivos limiares configurados, o sistema verifica a existência de alarmes previamente registrados durante o ciclo de monitoramento vigente. Na ausência de um alarme anterior, são executados os algoritmos de processamento digital de sinais (PDS) empregados para a identificação das características associadas ao aumento da energia vibratória. A partir dos resultados obtidos, é realizada a estimativa da possível condição de falha, sendo posteriormente encaminhado um e-mail contendo o diagnóstico provável.
 
@@ -428,7 +432,7 @@ A tela inicial do supervisório é apresentada na Figura~\ref{fig:supervisorio},
     \item apresentação dos valores calculados em tempo real.
 \end{enumerate}
 
-Além da tela inicial, o \textit{software} dispõe de outras interfaces destinadas à análise e ao gerenciamento das informações obtidas durante o monitoramento. A tela de análise permite a visualização gráfica dos resultados das técnicas de processamento digital de sinais empregadas no sistema, incluindo a Transformada Rápida de Fourier, a Transformada Wavelet, a Transformada de Hilbert e a análise cepstral. O sistema também dispõe de interfaces destinadas ao gerenciamento de alarmes, apresentação dos diagnósticos, acompanhamento dos níveis de severidade e gerenciamento dos planos de manutenção dos equipamentos.
+Além da tela inicial, o \textit{software} dispõe de outras interfaces destinadas à análise e ao gerenciamento das informações obtidas durante o monitoramento. A tela de análise permite a visualização gráfica dos resultados das técnicas de processamento digital de sinais empregadas no sistema, incluindo a FFT, a Transformada Wavelet, a Transformada de Hilbert e a análise cepstral. O sistema também dispõe de interfaces destinadas ao gerenciamento de alarmes, apresentação dos diagnósticos, acompanhamento dos níveis de severidade e gerenciamento dos planos de manutenção dos equipamentos.
 
 \begin{figure}[!t]
     \centering
@@ -522,7 +526,7 @@ Adicionalmente, a FFT foi aplicada ao sinal de aceleração com o objetivo de av
 
 Em seguida, foi realizada a análise do sinal envelopado, obtido a partir da aplicação da transformada de Hilbert ao sinal de vibração previamente filtrado. Essa abordagem permite investigar componentes de modulação associadas a eventos de impacto e, consequentemente, auxiliar na identificação de características relacionadas a falhas em elementos de rolamentos.
 
-No ensaio realizado, foi utilizado um filtro passa-altas com frequência de corte de 600 Hz. A análise espectral do sinal envelopado apresentou componentes associadas às frequências características de falhas em rolamentos, incluindo componentes relacionadas à BPFO e à BPFI, conforme apresentado na Figura~\ref{fig:FFT_hilbert}. Entretanto, essas componentes apresentaram amplitudes relativamente baixas, de modo que não foram suficientes para o acionamento do diagnóstico automático pelo software.
+No ensaio realizado, foi utilizado um filtro passa-altas com frequência de corte de 600 Hz. A análise espectral do sinal envelopado apresentou componentes associadas às frequências características de falhas em rolamentos, incluindo componentes relacionadas à BPFO(\textit{Ball Pass Frequency Outer}, frequência de passagem na pista externa) e à BPFI(\textit{Ball Pass Frequency Inner}, frequência de passagem da pista interna), conforme apresentado na Figura~\ref{fig:FFT_hilbert}. Entretanto, essas componentes apresentaram amplitudes relativamente baixas, de modo que não foram suficientes para o acionamento do diagnóstico automático pelo software.
 
 \begin{figure}[!t]
     \centering
@@ -577,7 +581,7 @@ A aplicação da FFT ao sinal de velocidade permitiu verificar essa
 característica no domínio da frequência. Conforme apresentado na
 Figura~\ref{fig:desbalanceamentoFFT_vel}, observa-se uma componente
 predominante próxima a 15 Hz no eixo $Y$. Considerando que o motor
-apresenta velocidade nominal de 1800 rpm a 60 Hz, a operação do
+apresenta velocidade síncrona de 1800 rpm a 60 Hz, a operação do
 inversor a 30 Hz corresponde, para as condições do ensaio, a uma
 velocidade de aproximadamente 900 rpm, equivalente a uma frequência
 de rotação de 15 Hz.
