@@ -22,7 +22,6 @@
 \title{Sistema de Apoio à Manutenção Preditiva Baseado na Análise de Vibração *\\
 {\footnotesize \textsuperscript{*}Note: Sub-titles are not captured for https://ieeexplore.ieee.org  and
 should not be used}
-\thanks{Identify applicable funding agency here. If none, delete this.}
 }
 
 \author{\IEEEauthorblockN{1\textsuperscript{st} Gabriel Macedo Lemos}
@@ -36,31 +35,63 @@ gabrielmlemos30@gmail}
 City, Country \\
 email address or ORCID}
 }
-
+% --- Adicione estas duas linhas no PRÉ-ÂMBULO (antes do \begin{document}) ---
+\renewcommand{\abstractname}{Resumo}
+\renewcommand{\IEEEkeywordsname}{Palavras-chave}
 \maketitle
-
 \begin{abstract}
-This document is a model and instructions for \LaTeX.
-This and the IEEEtran.cls file define the components of your paper [title, text, heads, etc.]. *CRITICAL: Do Not Use Symbols, Special Characters, Footnotes, 
-or Math in Paper Title or Abstract.
+No cenário industrial contemporâneo, a parada inesperada de equipamentos representa um dos maiores passivos financeiros e operacionais. Para mitigar esse problema, a manutenção preditiva fundamentada na análise de vibração destaca-se como uma técnica eficaz para o diagnóstico precoce de falhas estruturais e rotativas. Contudo, o alto custo dos equipamentos comerciais justifica sua aplicação apenas a ativos de prioridade máxima. Diante disso, neste trabalho é apresentado o desenvolvimento de um sistema integrado de monitoramento preditivo de vibração triaxial de baixo custo, composto por um nó sensor sem fio e um \textit{software} supervisório. O \textit{hardware} foi projetado utilizando um microcontrolador da família ESP32 em conjunto com um acelerômetro MEMS (\textit{Micro-Electro-Mechanical Systems}) ADXL345, operando de forma autônoma por bateria e transmitindo dados em rede local para armazenamento em nuvem e disparo de e-mails de alerta. O \textit{firmware} foi otimizado para contornar as restrições de memória RAM (\textit{Random Access Memory}) e processamento embarcado. O diagnóstico do maquinário é realizado no \textit{software} supervisório, desenvolvido em linguagem \textit{Python}, o qual processa os sinais adquiridos de maneira \textit{offline} e \textit{online}. A ferramenta aplica técnicas de Processamento Digital de Sinais, avaliando métricas no domínio do tempo, como fator de crista, valor RMS (\textit{Root Mean Square}) e valor de pico, e do domínio da frequência, por meio de transformadas matemáticas e filtros digitais. A interface gráfica classifica a severidade dos alarmes, identifica falhas principais e secundárias, elabora \textit{checklists} dinâmicos de intervenção e exporta relatórios do histórico em formato CSV (\textit{Comma-Separated Values}). Os resultados indicam que o sistema desenvolvido viabiliza o monitoramento contínuo com desempenho satisfatório e precisão diagnóstica, democratizando o acesso a tecnologias de ponta. Dessa forma, a solução permite que profissionais da manutenção executem intervenções assertivas, de baixo custo e de fácil aplicação.
 \end{abstract}
 
 \begin{IEEEkeywords}
-component, formatting, style, styling, insert.
+Análise de Vibração, Sistema Supervisório, Diagnóstico de falhas, Acelerômetro, Assinatura espectral.
 \end{IEEEkeywords}
 
-\section{Introduction}
-Fazer depois.
+\section{Introdução}
+\subsection{Contextualização}
 
-\subsection{Maintaining the Integrity of the Specifications}
+No cenário industrial, a parada inesperada de máquinas representa um dos maiores gargalos financeiros e operacionais para as empresas. Para contornar esse problema, consolidou-se o uso da manutenção preventiva, na qual estipula-se um período para a realização de intervenções com base no histórico de manutenções passadas e nas recomendações de garantia dos fabricantes. 
 
-The IEEEtran class file is used to format your paper and style the text. All margins, 
-column widths, line spaces, and text fonts are prescribed; please do not 
-alter them. You may note peculiarities. For example, the head margin
-measures proportionately more than is customary. This measurement 
-and others are deliberate, using specifications that anticipate your paper 
-as one part of the entire proceedings, and not as an independent document. 
-Please do not revise any of the current designations.
+O desafio dessa abordagem é que, frequentemente, esse período é subestimado, especialmente em ativos de alta prioridade, visando reduzir ao máximo o risco de uma manutenção corretiva, que ocorre após a falha. Contudo, ao antecipar demasiadamente as paradas, eleva-se o risco de descartar componentes que ainda possuem vida útil e de realizar intervenções desnecessárias. Diante dessa limitação, a manutenção preditiva surge como uma alternativa mais eficiente.
+
+A manutenção preditiva pode ser realizada pela coleta de dados de forma contínua ou intermitente, empregando sensores que permitem a detecção precoce de falhas. Posteriormente, esses dados podem ou não ser processados e analisados a partir de um \textit{software}.
+Essa modalidade utiliza a tecnologia da informação junto com técnicas de análise de dados 
+para a inspeção contínua ou periódica de equipamentos, a depender da 
+criticidade do ativo. Entre as variáveis monitoradas, a análise de 
+vibração destaca-se por permitir a identificação do estado de saúde do 
+equipamento a partir de sua assinatura espectral, sendo esta uma das 
+variáveis observáveis na manutenção preditiva. Por meio de técnicas de 
+processamento digital de sinais, torna-se possível estimar o tipo de 
+defeito manifestado e a sua intensidade.
+
+Para potencializar essa análise, integra-se um \textit{software} supervisório capaz de fornecer o diagnóstico detalhado do maquinário, histórico de falhas, recomendações de ações para manutenções futuras, suporte a análises nos modos \textit{online} e \textit{offline}, além da exportação de relatórios em formato CSV (\textit{Comma-Separated Values}).
+
+\subsection{Justificativa e Objetivos}
+
+A justificativa deste trabalho fundamenta-se no desenvolvimento de um dispositivo 
+que desempenhe, de forma satisfatória, as funções das ferramentas mais avançadas 
+do mercado, porém com um custo significativamente reduzido. Além disso, busca-se 
+integrar diversas competências para a criação de um pacote completo de análise de 
+vibração voltado à manutenção preditiva. Esse produto fará parte de um sistema 
+integrado que abrange desde a captação de dados por meio de sensores até o \textit{software} 
+supervisório para análise. O sistema será capaz de estimar falhas, gerar relatórios 
+técnicos e emitir solicitações de intervenção de forma automática. Dessa forma, o 
+profissional da área receberá auxílio direto na definição de seu cronograma de 
+atividades, sem a necessidade de conhecimentos avançados em engenharia.
+
+Diante disso, o objetivo geral deste trabalho é desenvolver um sistema de monitoramento 
+preditivo de baixo custo que forneça diagnósticos claros e acessíveis em uma interface 
+supervisória, permitindo que a equipe de manutenção tome decisões assertivas.
+
+Para alcançar a meta proposta, estabelecem-se os seguintes objetivos específicos:
+
+\begin{itemize}
+   \item Projetar e protipar o \textit{hardware} de um nó sensor sem fio de baixo custo para a aquisição de sinais de vibração triaxial em máquinas rotativas;
+    \item Desenvolver e otimizar o \textit{firmware} do dispositivo, bem como implementar a arquitetura de aquisição, transmissão e armazenamento dos dados coletados;
+    \item Aplicar técnicas de Processamento Digital de Sinais para a extração de características e o diagnóstico de falhas mecânicas;
+    \item Desenvolver um sistema supervisório para monitoramento, gerenciamento de alarmes e apoio à tomada de decisão em manutenção.
+\end{itemize}
+
 
 \section{Fundamentação Teórica}
 Com o avanço tecnológico e as sucessivas revoluções
@@ -394,7 +425,7 @@ Para o desenvolvimento e a organização do software, foram utilizados os ambien
 
 \subsection{Arquitetura do Sistema}
 
-O sistema proposto foi desenvolvido para realizar a aquisição, transmissão e análise de sinais de vibração, utilizando o acelerômetro \textit{ADXL345} para a aquisição dos dados de aceleração e o microcontrolador XIAO ESP32-C3 para o processamento inicial e o gerenciamento da comunicação. A arquitetura desenvolvida permite três modos distintos de operação, configuráveis por meio da interface supervisória: \textit{online}, \textit{offline} e \textit{serial}.
+O sistema proposto foi desenvolvido para realizar a aquisição, transmissão e análise de sinais de vibração, utilizando o acelerômetro \textit{ADXL345} para a aquisição dos dados de aceleração e o microcontrolador XIAO ESP32-C6 para o processamento inicial e o gerenciamento da comunicação. A arquitetura desenvolvida permite três modos distintos de operação, configuráveis por meio da interface supervisória: \textit{online}, \textit{offline} e \textit{serial}.
 
 No modo \textit{online}, também denominado monitoramento contínuo, o dispositivo permanece conectado à Internet por meio de uma rede \textit{Wi-Fi} e realiza a transmissão dos dados utilizando o protocolo \textit{WebSocket}. A utilização desse protocolo permite o estabelecimento de uma comunicação bidirecional entre o dispositivo e o computador, mantendo a conexão disponível para o envio e o recebimento de dados. Para a operação nesse modo, o usuário deve configurar o endereço IP do computador, as credenciais da rede \textit{Wi-Fi} e selecionar o modo correspondente na interface supervisória antes do início da aquisição. A principal limitação dessa configuração está relacionada ao consumo de energia, que pode atingir aproximadamente 220~mA durante a transmissão, tornando necessária, em aplicações prolongadas, a utilização de uma fonte de alimentação externa, em função da capacidade limitada da bateria de 600~mAh.
 
@@ -417,7 +448,7 @@ Foi desenvolvido um \textit{software} supervisório destinado à visualização 
 A tela inicial do supervisório é apresentada na Figura~\ref{fig:supervisorio}, na qual são destacadas as principais funcionalidades disponíveis:
 
 \begin{enumerate}
-    \item status da conexão \textit{Wi-Fi} do XIAO ESP32-C3;
+    \item status da conexão \textit{Wi-Fi} do XIAO ESP32-C6;
     \item status da conexão \textit{WebSocket} com o dispositivo;
     \item seleção do equipamento a ser monitorado;
     \item processamento de arquivos adquiridos durante o modo \textit{offline};
@@ -687,11 +718,32 @@ Em um dos ensaios, o sistema supervisório classificou a ocorrência como severi
     {\footnotesize Fonte: Elaborado pelo autor.}
 \end{figure}
 
+\section{Resultados}
+Os três ensaios práticos aos quais o motor foi submetido na última etapa serviram para compilar as principais técnicas de análise de processamento digital de sinais, bem como para avaliar o \textit{software} supervisório sob um ambiente prático, embora controlado, o que tornou possível identificar as falhas a partir dos indicadores e consolidar as metas do projeto.
+
+No cenário ideal, ao avaliar o motor sem estresse externo, os baixos níveis de amplitude registrados enfatizam a estabilidade mecânica do sistema. Mesmo com essa estabilidade, o \textit{software} mostrou-se capaz de identificar falhas prematuras de rolamentos. Essa identificação foi possível graças à aplicação da transformada de Hilbert, que viabilizou a detecção de indícios de falha em frequências elevadas que não eram visíveis na FFT convencional devido aos baixos níveis de valor RMS e de pico. Com isso, o sistema demonstrou eficiência em captar falhas prematuras.
+
+Após atestar o cenário próximo do ideal, introduziu-se um desbalanceamento por meio de uma ferramenta excêntrica fixada ao eixo. O comportamento do sistema como um todo foi dominado por uma componente com frequência de 15 Hz no eixo Y, de modo que o comportamento no domínio do tempo se aproximou muito de uma forma de onda senoidal. Ao aplicar a transformada de wavelet, identificaram-se no espectrograma várias regiões luminosas que evidenciam a periodicidade do fenômeno. Esse resultado demonstrou a grande relevância da transformada de wavelet devido à sua excelente resolução tanto no tempo quanto na frequência, o que possibilita analisar as faixas de frequências infligidas e o tempo de duração das perturbações. Após o início da análise, o sistema supervisório emitiu um alerta de severidade D, o que gerou um diagnóstico de desbalanceamento com criticidade máxima e comprovou que o algoritmo utilizado conseguiu segregar os diversos tipos de falhas para determinar a condição correta.
+
+Por fim, ao induzir impactos na estrutura do motor com o objetivo de analisar o cenário de folgas mecânicas, a resposta temporal caracterizou-se por um pico de energia nos três eixos ortogonais sucedido por um decaimento exponencial. Utilizou-se a transformada de wavelet para essa detecção, visto que ela é extremamente útil na análise de transientes, o que permitiu mapear que a região do espectro de frequência ocupada pelo impacto situou-se em torno de 100 Hz por um intervalo de tempo muito reduzido. Esse resultado destacou um aspecto analítico crucial na monitoração de impactos, no qual a severidade é determinada pelo elevado valor de pico instantâneo da velocidade, enquanto o valor RMS permanece baixo devido à natureza intermitente e de curta duração do pulso.
+
+Em síntese, a consolidação dos resultados comprova que a arquitetura integrada entre o nó sensor sem fio e o \textit{software} em linguagem \textit{Python} fornece diagnósticos em tempo real, demonstrando sua viabilidade como uma ferramenta de apoio à manutenção preditiva de baixo custo.
 
 
+\section{Conclusão}
+Neste trabalho foi apresentado o desenvolvimento e a validação de um protótipo de sistema de apoio à manutenção preditiva baseado na análise de vibração de máquinas rotativas. A proposta integrou, de forma bem-sucedida, um nó sensor sem fio de baixo custo a um \textit{software} supervisório dedicado ao processamento e à interpretação dos sinais adquiridos. O objetivo principal consistiu em viabilizar uma solução acessível e tecnicamente robusta, capaz de auxiliar equipes de engenharia na identificação precoce de falhas estruturais e rotativas, reduzindo a dependência de equipamentos comerciais de elevado custo e mitigando a necessidade inicial de especialistas dedicados exclusivamente à análise de sinais complexos.
 
+Os resultados experimentais demonstraram que a arquitetura proposta foi capaz de adquirir sinais de vibração triaxial utilizando um acelerômetro MEMS ADXL345 associado ao microcontrolador ESP32-C6, executando as etapas de transmissão, armazenamento e processamento de dados de forma altamente satisfatória. As limitações de \textit{hardware}, intrínsecas aos dispositivos de baixo custo, foram contornadas por meio de estratégias de otimização de \textit{firmware} e pela distribuição das tarefas computacionais.
 
+O gerenciamento seguro e estruturado dos dados de equipamentos, alarmes e usuários foi consolidado com a integração à plataforma \textit{Firebase}. No modo de operação \textit{offline}, o protótipo desempenhou um papel crucial ao permitir o monitoramento periódico do ativo sem a necessidade de manter o Wi-Fi ativado e a conexão constante com o supervisório, o que reduziria drasticamente a autonomia da bateria. Nessa configuração, o dispositivo realiza a análise localmente e entra em modo de consumo ultra-reduzido (\textit{deep sleep}); caso um alarme seja detectado, ele inicializa a rede e transfere os arquivos binários diretamente para o \textit{Google Drive}. Adicionalmente, a parametrização do dispositivo foi simplificada a partir do próprio supervisório via comunicação USB. Quando em \textit{deep sleep}, o circuito possui uma rotina de interrupção que o acorda instantaneamente após o estabelecimento da conexão cabeada, conferindo praticidade ao manuseio do protótipo.
 
+No âmbito do diagnóstico de engenharia, verificou-se que as técnicas de PDS empregadas apresentaram desempenhos complementares. A análise no domínio do tempo permitiu qualificar parâmetros globais de severidade, como os valores RMS, pico e fator de crista, ao passo que a FFT possibilitou o isolamento de componentes harmônicas fundamentais. A análise de envelope baseada na Transformada de Hilbert mostrou-se eficaz na identificação de defeitos incipientes em rolamentos, e a análise cepstral forneceu subsídios adicionais sobre a periodicidade do sinal. Contudo, o grande destaque residiu na aplicação da transformada wavelet, que exibiu o desempenho mais refinado na identificação de eventos transientes e impactos mecânicos, permitindo localizar com exatidão tanto a ocorrência temporal quanto o conteúdo espectral das perturbações.
+
+Os ensaios em motores de indução trifásicos validaram empiricamente a metodologia. A imposição controlada de desbalanceamento e impactos mecânicos gerou assinaturas vibratórias perfeitamente condizentes com a literatura especializada, sendo interpretadas com precisão pelo algoritmo desenvolvido. Além disso, a capacidade da interface de classificar a severidade de alarmes, registrar históricos, gerar \textit{checklists} dinâmicos e exportar relatórios em formato CSV demonstrou o potencial da ferramenta como um sistema de suporte à tomada de decisão operacional.
+
+Desse modo, conclui-se que os objetivos estabelecidos foram plenamente alcançados. Como contribuição principal, o trabalho provou a viabilidade técnica do monitoramento preditivo de ativos de baixa e média criticidade por meio de \textit{hardware} acessível, estabelecendo uma relação custo-benefício satisfatória quando contrastada com soluções comerciais consolidadas.
+
+Como trabalhos futuros, recomenda-se a exploração de acelerômetros com maior resolução e largura de banda para estender os limites de análise espectral, além da implementação de algoritmos de aprendizado de máquina para a classificação automatizada e autônoma de falhas. Sugere-se também a ampliação da base de testes para outros modos de falha mecânicos e elétricos, bem como a validação do protótipo em ambiente industrial contínuo. Por fim, aponta-se como um desdobramento promissor o desenvolvimento de modelos prognósticos baseados em inteligência artificial para a estimativa do tempo de vida útil remanescente dos componentes monitorados.
 % Utiliza o estilo padrão exigido pela IEEE (numérico em ordem de citação)
 \bibliographystyle{IEEEtran}
 
